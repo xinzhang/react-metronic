@@ -1,0 +1,11 @@
+.footer-bar {
+  color: white;
+  background-color: #333;
+  line-height: 40px;
+  font-size: 13px;
+  margin-top: 20px;
+  padding-left: 10px;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0; }

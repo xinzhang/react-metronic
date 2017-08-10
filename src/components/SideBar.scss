@@ -1,0 +1,21 @@
+
+.side-bar {
+    width: 160px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    & > NavLink {
+        margin: 10px;
+    }
+    
+    .un-selected-item {
+        background-color: white;
+    }
+
+    .selected-item {
+        background-color: yellow;
+    }
+
+}
+

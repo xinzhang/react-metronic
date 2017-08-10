@@ -1,0 +1,29 @@
+
+.logo {
+    width: 110px;
+    height: auto;
+    padding-left: 3px;
+}
+
+.primary-header {
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    .menu-logo {
+        align-content: flex-start;
+    }
+
+    .menu-bar {
+        align-content: flex-end;
+        display: flex;
+        flex-direction: row;
+        cursor: pointer;
+
+        .menu-item {
+            margin-right: 20px;
+        }
+    }
+}

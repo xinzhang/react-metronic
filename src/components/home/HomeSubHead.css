@@ -1,0 +1,11 @@
+.home-sub-header {
+  margin-top: 10px;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center; }
+  .home-sub-header .menu-bar {
+    margin-left: 40px; }
+    .home-sub-header .menu-bar .menu-item {
+      margin-left: 20px; }

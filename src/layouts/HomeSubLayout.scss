@@ -1,0 +1,14 @@
+.home-sub-sub-layout {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+
+    .home-sub-sub-side-bar {
+        padding: 10px;
+    }
+
+    .home-sub-sub-content {
+        margin-left: 20px;
+        padding-top: 10px;
+    }
+}
