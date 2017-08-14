@@ -11,9 +11,9 @@ import EpdsSubLayout from './EpdsSubLayout';
 import './HomeSubLayout.css';
 
 const HomeSubLayout = ({ match }) => (
-  <div className="home-sub-layout">
+  <div className="c-home-sub-layout">
     <HomeSubHeader />
-    <div className="home-content">
+    <div>
       <Switch>
         <Route path={ `${match.path}` } exact component={ AccountSummarySubLayout } />
         <Route path={ `${match.path}/account-summary` } component={ AccountSummarySubLayout } />

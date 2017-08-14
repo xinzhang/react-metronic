@@ -1,5 +1,13 @@
+
+/* set the height of html and body to 100%, it is for the layout of footer */
+html,
 body {
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
+	margin:0;
+	padding:0;
+	height:100%;
+}
+
+/* set the height of "root" div to 100%, it is for the layout of footer */
+#root {
+	height:100%;
 }

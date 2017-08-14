@@ -2,9 +2,9 @@ import React from 'react';
 import './FooterPage.css';
 
 const FooterPage = () => (
-  <footer className="footer-bar">
+  <div className="c-footer-bar">
     Ausmaq Client Portal NAS © 2017
-  </footer>
+  </div>
 )
 
 export default FooterPage;

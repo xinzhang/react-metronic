@@ -15,11 +15,11 @@ const AccountSummarySubLayout = ({ match }) => {
   const subMenuData = MenuData.filter( r => r.type === 'AccountSummary' );
 
   return (
-    <div className="home-sub-sub-layout">
-        <aside className="home-sub-sub-side-bar">
+    <div className="c-home-sub-sub-layout">
+        <aside className="c-home-sub-sub-side-bar">
             <SideBar menuData={ subMenuData } currentMenu={ currentMenu } />
         </aside>
-        <div className="home-sub-sub-content"> 
+        <div className="c-home-sub-sub-content"> 
             <Switch> 
                 <Route path={ `${match.path}` } exact component={ AccountSummaryPage } />
                 <Route path={ `${match.path}/account-summary` } component={ AccountSummaryPage } />

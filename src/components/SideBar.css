@@ -5,7 +5,3 @@
   justify-content: flex-start; }
   .side-bar > NavLink {
     margin: 10px; }
-  .side-bar .un-selected-item {
-    background-color: white; }
-  .side-bar .selected-item {
-    background-color: yellow; }

@@ -16,11 +16,11 @@ const OrderPadSubLayout = ({ match }) => {
   const subMenuData = MenuData.filter( r => r.type === 'OrderPad' );
 
   return (
-    <div className="home-sub-sub-layout">
-        <aside className="home-sub-sub-side-bar" >
+    <div className="c-home-sub-sub-layout">
+        <aside className="c-home-sub-sub-side-bar" >
             <SideBar menuData={ subMenuData } currentMenu={ currentMenu } />
         </aside>
-        <div className="home-sub-sub-content">
+        <div className="c-home-sub-sub-content">
         <Switch>
             <Route path={ `${match.path}` } exact component={ OrderPadPage } />
             <Route path={ `${match.path}/order-pad` } component={ OrderPadPage } />

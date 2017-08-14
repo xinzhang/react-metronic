@@ -18,10 +18,10 @@ const UnauthorizedLayout = () => (
     
     */}
     <Switch>
-      <Route path="/auth/login" exact component={LoginPage} />
-      <Route path="/auth/forgot-username" component={ForgotUsernamePage} />
-      <Route path="/auth/forgot-password" component={ForgotPasswordPage} />
-      <Route path="/auth/privacy-policy" component={PrivacyPolicyPage} />
+      <Route path="/auth/login" exact component={ LoginPage } />
+      <Route path="/auth/forgot-username" component={ ForgotUsernamePage } />
+      <Route path="/auth/forgot-password" component={ ForgotPasswordPage } />
+      <Route path="/auth/privacy-policy" component={ PrivacyPolicyPage } />
       <Redirect to="/auth/login" />
     </Switch>
   </div>
