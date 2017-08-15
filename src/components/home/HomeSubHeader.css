@@ -1,0 +1,8 @@
+.c-home-sub-header {
+  background-color: #2f373e;
+  /* the following code is for the layout of home-sub-menu */ }
+  .c-home-sub-header .c-navbar-collapse-margin {
+    margin-top: 41px;
+    margin-left: -1px; }
+  .c-home-sub-header .c-test-class {
+    border: 1px solid red; }

@@ -1,0 +1,140 @@
+$btn-blue-color: #009dc7;
+$btn-green-color: green;
+$btn-red-color: #C91F1F;
+$btn-purple-color: #6666cc;
+
+.margin-right-3 {
+    margin-right: 3px;
+}
+
+.c-logo-img {
+    width: auto;
+    height: 25px;
+}
+
+@mixin commom-btn ($btn-bg-color) {
+    .dropdown-menu-v2 {
+        padding: 0;
+        min-width: 300px; 
+        :before {
+            border-color: transparent transparent #21282e transparent; 
+        }
+    }
+
+    .btn {
+        top: 6px;
+        background: $btn-bg-color;
+        width: 35px;
+        height: 35px; 
+        i {
+            //font-size: 15px;
+            //line-height: 1.6;
+            font-size: 18px;
+            line-height: 1.4;
+            margin-left: -1px;
+            color: #fff; 
+            :hover {
+                color: #fff; 
+            }
+        }
+        .badge {
+            top: -10px;
+            right: -10px;
+            height: 21px;
+            color: #62717f;
+            min-width: 21px;
+            font-weight: 700;
+            line-height: 1.4;
+            position: absolute;
+            background: transparent;
+            border: 2px solid #2f373e;
+            font-size: 9px !important;
+            background: #fff; 
+        }
+    }
+
+    .external {
+        padding: 15px;
+        display: block;
+        overflow: hidden;
+        background: #21282e;
+        letter-spacing: 0.5px; 
+        h3 {
+            margin: 0;
+            z-index: 1;
+            padding: 0;
+            float: left;
+            color: #bbb;
+            font-size: 13px;
+            line-height: 1.4;
+            max-width: 200px;
+            position: relative; 
+        }
+        a {
+            padding: 0;
+            clear: none;
+            font-size: 13px;
+            font-weight: 300;
+            text-align: right;
+            color: #009dc7;
+            text-transform: lowercase; 
+        }
+    }
+
+    .dropdown-menu-list > li {
+        display: block;
+        padding: 15px;
+        border-top: 1px solid #2e353c; 
+        :before, :after {
+            display: table;
+            content: " "; 
+        }
+        :after {
+            clear: both; 
+        }
+        :first-child {
+            border-top: none; 
+        }
+        :hover {
+            background: #21282e; 
+        }
+        > a {
+            color: #606e7a;
+            overflow: hidden; 
+            .details {
+                float: left;
+                max-width: 215px; 
+                .label {
+                    float: left;
+                    padding: 5px;
+                    margin-right: 10px; 
+                }
+            }
+            .time {
+                float: right;
+                font-size: 12px;
+                padding: 4px 8px;
+                background: #2a3239; 
+            }
+            :hover {
+                text-decoration: none; 
+            }
+        }
+    }
+}
+
+.page-header .navbar .topbar-actions .c-btn-group-blue {
+    @include commom-btn($btn-blue-color);
+}
+
+.page-header .navbar .topbar-actions .c-btn-group-green {
+    @include commom-btn($btn-green-color);
+}
+
+.page-header .navbar .topbar-actions .c-btn-group-red {
+    @include commom-btn($btn-red-color);
+}
+
+.page-header .navbar .topbar-actions .c-btn-group-purple {
+    @include commom-btn($btn-purple-color);
+}

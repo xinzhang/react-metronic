@@ -1,0 +1,15 @@
+.c-primary-layout {
+  min-height: 100%;
+  position: relative;
+  margin: 0px 20px;
+  background-color: white; }
+  .c-primary-layout .c-primary-header-content {
+    padding-bottom: 40px;
+    /* Height of the footer element */ }
+  .c-primary-layout .c-primary-footer {
+    height: 40px;
+    /* Height of the footer element */
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0; }

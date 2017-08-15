@@ -1,0 +1,65 @@
+.c-login-layout {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 100vh;
+
+
+    .c-conent {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        align-items: center;
+        padding: 0px;
+
+        .c-login-title {
+            background-color: #06070C;
+            color: white;
+            line-height: 45px;
+            font-weight: bold;
+            font-size: 20px;
+            width: 100%;
+            text-align: center;
+            padding: 5px 0px;
+
+            & > img {
+                width: 90px;
+                height: auto;
+            }
+        }
+
+        .c-login-form {
+            padding: 10px;
+
+            .c-form-title {
+                text-align: center;
+            }
+
+            .c-login {
+                margin-bottom: 20px;
+            }
+        }
+    }
+}
+
+.c-forget-link {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    font-size: 13px;
+
+    .c-forget-username {
+        align-items: flex-start;
+    }
+
+    .c-forget-password {
+        align-items: flex-end;
+    }
+}
+
+.c-privacy-policy {
+    margin-top: 10px;
+    font-size: 13px;
+}

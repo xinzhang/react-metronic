@@ -1,7 +1,3 @@
-.side-bar {
-  width: 160px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start; }
-  .side-bar > NavLink {
-    margin: 10px; }
+.c-side-bar {
+  width: 250px;
+  padding: 0px; }
