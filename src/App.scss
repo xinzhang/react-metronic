@@ -1,0 +1,77 @@
+/*
+.c-fadeTranslate-enter {
+  opacity: 0;
+}
+
+.c-fadeTranslate-enter.c-fadeTranslate-enter-active {
+  opacity: 1;
+  transition: opacity 1000ms ease-in;
+}
+
+.c-fadeTranslate-exit {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+.c-fadeTranslate-exit.c-fadeTranslate-exit-active {
+  opacity: 0;
+  transform: translate(0, 3vh);
+  transition: opacity 1000ms ease-in, transform 1000ms ease-in-out;
+}
+*/
+
+/*
+.c-fadeTranslate-enter {
+  opacity: 0;
+  transform: translate(0, -3vh);
+  position: fixed;
+}
+
+.c-fadeTranslate-enter.c-fadeTranslate-enter-active {
+  opacity: 1;
+  transform: translate(0, 0);
+  transition: opacity 500ms ease-in 500ms, transform 500ms ease-in-out 500ms;
+}
+
+.c-fadeTranslate-exit {
+  opacity: 1;
+  position: fixed;
+  transform: translate(0, 0);
+}
+
+.c-fadeTranslate-exit.c-fadeTranslate-exit-active {
+  opacity: 0;
+  transform: translate(0, 3vh);
+  transition: opacity 300ms ease-in, transform 300ms ease-in-out;
+}
+*/
+
+.c-fadeTranslate-enter {
+  opacity: 0.01;
+  overflow-y: auto;
+}
+
+.c-fadeTranslate-enter.c-fadeTranslate-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in 200ms; 
+  overflow-y: visible;
+}
+
+.c-fadeTranslate-exit {
+  opacity: 1;
+  overflow-y: auto;
+}
+
+.c-fadeTranslate-exit.c-fadeTranslate-exit-active {
+  opacity: 0.01;
+  transition: opacity 500ms ease-in;
+  overflow-y: auto;
+}
+
+
+.c-transition-group {
+    height: 100%;
+}
+.c-fix-container {
+    height: 100%;
+}

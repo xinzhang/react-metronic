@@ -1,0 +1,26 @@
+$InfoTagBorderColor: #ddd;
+
+.c-info-tag-container {
+    display: flex;
+    flex-direction: column;
+
+    .c-info-tag-title {
+        line-height: 40px;
+        font-size: 20px;
+        font-weight: bold;
+    }
+    .c-info-tag-name {
+        line-height: 30px;
+        font-size: 16px;
+        text-align: center;
+        border-top-style: double;
+        border-top-color: $InfoTagBorderColor;
+        border-bottom-style: double;
+        border-bottom-color: $InfoTagBorderColor;
+    }
+    .c-info-tag-text {
+        line-height: 30px;
+        font-size: 12px;
+    }
+}
+

@@ -1,0 +1,80 @@
+
+export const sideBarMenuData = [
+    {
+        type: 'AccountSummary',
+        name: 'AccountSummary',
+        text: 'Account Summary',
+        link: '/app/home/account-summary/account-summary',
+        icon: 'fa fa-user',
+    },
+    {
+        type: 'AccountSummary',
+        name: 'PortfolioSummary',
+        text: 'Portfolio Summary',
+        link: '/app/home/account-summary/portfolio-summary',
+        icon: 'fa fa-anchor',
+    },
+    {
+        type: 'AccountSummary',
+        name: 'TransactionHistory',
+        text: 'Transaction History',
+        link: '/app/home/account-summary/transaction-history',
+        icon: 'fa fa-history',
+    },
+    {
+        type: 'OrderPad',
+        name: 'OrderPad',
+        text: 'Order Pad',
+        link: '/app/home/order-pad/order-pad',
+        icon: 'fa fa-gears',
+    },
+    {
+        type: 'OrderPad',
+        name: 'Authorisations',
+        text: 'Authorisations',
+        link: '/app/home/order-pad/authorisations',
+        icon: 'fa fa-user',
+    },
+    {
+        type: 'OrderPad',
+        name: 'Rejections',
+        text: 'Rejections',
+        link: '/app/home/order-pad/rejections',
+        icon: 'fa fa-hand-stop-o',
+    },
+    {
+        type: 'OrderPad',
+        name: 'InProcess',
+        text: 'In Process',
+        link: '/app/home/order-pad/in-process',
+        icon: 'fa fa-play',
+    },
+    {
+        type: 'OrderPad',
+        name: 'DeletedOrders',
+        text: 'Deleted Orders',
+        link: '/app/home/order-pad/deleted-orders',
+        icon: 'fa fa-recycle',
+    },
+    {
+        type: 'Pricing',
+        name: 'FundSummary',
+        text: 'Fund Summary',
+        link: '/app/home/pricing/fund-summary',
+        icon: 'fa fa-book',
+    },
+    {
+        type: 'Pricing',
+        name: 'UnitPrices',
+        text: 'Unit Prices',
+        link: '/app/home/pricing/unit-prices',
+        icon: 'fa fa-dollar',
+    },
+    {
+        type: 'Pricing',
+        name: 'FundPerformance',
+        text: 'Fund Performance',
+        link: '/app/home/pricing/fund-performance',
+        icon: 'fa fa-line-chart',
+    }
+];

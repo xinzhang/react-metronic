@@ -1,0 +1,7 @@
+.c-select-component-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center; }
+  .c-select-component-container .c-select-title {
+    padding-right: 10px;
+    font-weight: bold; }

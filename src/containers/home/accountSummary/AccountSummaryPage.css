@@ -1,2 +1,30 @@
-.account-summary-container {
-  background-color: white; }
+.c-account-summary-container {
+  padding: 15px; }
+  .c-account-summary-container .c-search-toolbar {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column; }
+    .c-account-summary-container .c-search-toolbar .c-button-row {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end; }
+      .c-account-summary-container .c-search-toolbar .c-button-row .c-reset-button {
+        margin-right: 10px; }
+  .c-account-summary-container .c-search-result-titlebar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between; }
+    .c-account-summary-container .c-search-result-titlebar .c-search-result-title {
+      align-items: flex-start; }
+    .c-account-summary-container .c-search-result-titlebar .c-search-result-buttons {
+      align-items: flex-end;
+      display: flex;
+      flex-direction: row;
+      align-items: center; }
+      .c-account-summary-container .c-search-result-titlebar .c-search-result-buttons .c-search-result-toolbar {
+        margin-right: 5px; }
+  .c-account-summary-container .c-search-result-body .c-search-result-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; }

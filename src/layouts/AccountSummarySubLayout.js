@@ -1,6 +1,6 @@
 import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
-import { MenuData } from '../constants/MenuData';
+import { sideBarMenuData } from '../constants/SideBarMenuData';
 import SideBar from '../components/SideBar';
 
 // Sub Pages
@@ -12,7 +12,7 @@ import './AccountSummarySubLayout.css';
  
 const AccountSummarySubLayout = ({ match }) => {    
   const currentMenu = 'AccountSummary';
-  const subMenuData = MenuData.filter( r => r.type === 'AccountSummary' );
+  const subMenuData = sideBarMenuData.filter( r => r.type === 'AccountSummary' );
 
   return (
     <div className="c-home-sub-sub-layout">
@@ -23,7 +23,7 @@ const AccountSummarySubLayout = ({ match }) => {
             <Switch> 
                 <Route path={ `${match.path}` } exact component={ AccountSummaryPage } />
                 <Route path={ `${match.path}/account-summary` } component={ AccountSummaryPage } />
-                <Route path={ `${match.path}/portfoli-summary` } component={ PortfolioSummaryPage } />
+                <Route path={ `${match.path}/portfolio-summary` } component={ PortfolioSummaryPage } />
                 <Route path={ `${match.path}/transaction-history` } component={ TransactionHistoryPage } />
                 <Redirect to={ `${match.url}` } />
             </Switch>

@@ -1,0 +1,20 @@
+.c-portfolio-container {
+  padding: 15px; }
+  .c-portfolio-container .c-portfoliao-title {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end; }
+  .c-portfolio-container .c-search-result-container .c-search-result-titlebar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between; }
+  .c-portfolio-container .c-search-result-container .c-search-result-body-fund {
+    margin-top: 10px; }
+    .c-portfolio-container .c-search-result-container .c-search-result-body-fund .c-result-title {
+      margin-bottom: 5px; }
+  .c-portfolio-container .c-search-result-container .c-search-result-body-deposit {
+    margin-top: 80px; }
+    .c-portfolio-container .c-search-result-container .c-search-result-body-deposit .c-result-title {
+      margin-bottom: 5px; }

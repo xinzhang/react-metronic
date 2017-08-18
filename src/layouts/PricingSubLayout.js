@@ -1,6 +1,6 @@
 import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
-import { MenuData } from '../constants/MenuData';
+import { sideBarMenuData } from '../constants/SideBarMenuData';
 import SideBar from '../components/SideBar';
 
 // Sub Pages
@@ -10,7 +10,7 @@ import FundPerformancePage from '../containers/home/pricing/FundPerformancePage'
 
 const PricingSubLayout = ({ match }) => {    
   const currentMenu = 'Pricing';
-  const subMenuData = MenuData.filter( r => r.type === 'Pricing' );
+  const subMenuData = sideBarMenuData.filter( r => r.type === 'Pricing' );
 
   return (
     <div className="c-home-sub-sub-layout">

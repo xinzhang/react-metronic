@@ -1,6 +1,6 @@
 import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
-import { MenuData } from '../constants/MenuData';
+import { sideBarMenuData } from '../constants/SideBarMenuData';
 import SideBar from '../components/SideBar';
 
 // Sub Pages
@@ -13,7 +13,7 @@ import DeletedOrdersPage from '../containers/home/orderPad/DeletedOrdersPage';
 
 const OrderPadSubLayout = ({ match }) => {    
   const currentMenu = 'OrderPad';
-  const subMenuData = MenuData.filter( r => r.type === 'OrderPad' );
+  const subMenuData = sideBarMenuData.filter( r => r.type === 'OrderPad' );
 
   return (
     <div className="c-home-sub-sub-layout">

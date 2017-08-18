@@ -1,0 +1,14 @@
+$ResultConclusionContainerColor: #ddd;
+
+.c-result-conclusion-container {
+    width: 100%;
+    line-height: 35px;
+    border-left: 1px solid $ResultConclusionContainerColor;
+    border-right: 1px solid $ResultConclusionContainerColor;
+    border-bottom: 1px solid $ResultConclusionContainerColor;
+
+    text-align: right;
+    padding-right: 40px;
+    font-size: 14px;
+    font-weight: bold;
+}

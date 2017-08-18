@@ -1,0 +1,24 @@
+.c-transaction-history-container {
+  padding: 15px; }
+  .c-transaction-history-container .c-transaction-title {
+    display: flex;
+    flex-direction: row; }
+  .c-transaction-history-container .c-search-result-body-fund {
+    margin-top: 10px; }
+    .c-transaction-history-container .c-search-result-body-fund .c-result-title {
+      margin-bottom: 5px; }
+    .c-transaction-history-container .c-search-result-body-fund .c-fund-selector {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end; }
+  .c-transaction-history-container .c-search-result-body-deposit {
+    margin-top: 80px; }
+    .c-transaction-history-container .c-search-result-body-deposit .c-result-title {
+      margin-bottom: 5px; }
+    .c-transaction-history-container .c-search-result-body-deposit .c-fund-selector {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+      align-items: center; }
+  .c-transaction-history-container .c-result-transaction-toolbar {
+    margin-top: 60px; }

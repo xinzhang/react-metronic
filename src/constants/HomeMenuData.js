@@ -1,22 +1,22 @@
 export const homeMenuData = [
 {
-    menuText: 'Account Summary',
+    text: 'Account Summary',
     link: '/app/home/account-summary',
-    iconClass: 'fa fa-file-text-o',
+    icon: 'fa fa-file-text-o',
 },
 {
-    menuText: 'Order Pad',
+    text: 'Order Pad',
     link: '/app/home/order-pad',
-    iconClass: 'fa fa-cog',
+    icon: 'fa fa-cog',
 },
 {
-    menuText: 'Pricing',
+    text: 'Pricing',
     link: '/app/home/pricing',
-    iconClass: 'fa fa-money',
+    icon: 'fa fa-money',
 },
 {
-    menuText: 'EPDS',
+    text: 'EPDS',
     link: '/app/home/epds',
-    iconClass: 'fa fa-database',
+    icon: 'fa fa-database',
 }
 ];

@@ -1,0 +1,13 @@
+.c-result-title-container {
+    display: flex;
+    flex-direction: column;
+
+    .c-main-title {
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    .c-sub-title {
+        font-size: 12px;
+    }
+}

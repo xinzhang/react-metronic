@@ -1,0 +1,9 @@
+.c-dropdown-menu-open {
+  max-height: 130px;
+  overflow: hidden;
+  min-height: 0px; }
+
+.c-dropdown-menu-inner {
+  max-height: 128px;
+  overflow-y: auto;
+  min-height: 0px; }

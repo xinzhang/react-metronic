@@ -8,7 +8,8 @@ const TopHeader = ({ history }) => {
     return (
         <div className="page-header">
             { /* BEGIN HEADER */ }
-            <nav className="navbar mega-menu" role="navigation">
+            { /* <nav className="navbar mega-menu" role="navigation"> */ }
+            <nav className="navbar mega-menu">
                 <div className="container-fluid">
                     <div className="clearfix navbar-fixed-top">
                         { /* Brand and toggle get grouped for better mobile display */ }

@@ -3,31 +3,38 @@ import { NavLink, withRouter } from 'react-router-dom';
 import { homeMenuData } from '../../constants/HomeMenuData.js';
 import './HomeSubHeader.css';
 
-class PrimaryHeader extends Component {
+class HomeSubHeader extends Component {
     constructor(props) {
         super(props);
-        this.homeMenuClick = this.homeMenuClick.bind(this);
+        this.state = {
+            selectedItem: 0
+        };
     }
 
-    homeMenuClick(e) {
-        console.log(e.target.className);
-
-        // do it later
+    menuClick(index) {
+        this.setState({ selectedItem: index });
     }
 
     render() {
-        const menuContent = homeMenuData.map(item => {
+        const menuContent = homeMenuData.map((item, index) => {
+            let isSelected = this.state.selectedItem === index;
+            let liClassName = "dropdown dropdown-fw dropdown-fw-disabled";
+            if (isSelected) {
+                liClassName += " open";
+            }
+
             return (
-                <li className="dropdown dropdown-fw dropdown-fw-disabled" key={ item.menuText } onClick={ this.homeMenuClick } >
+                <li className={ liClassName } key={ item.text } onClick={ this.menuClick.bind(this, index) } >
                     <NavLink to={ item.link } exact activeClassName="active" className="text-uppercase">
-                        <i className={ item.iconClass } ></i> { item.menuText } </NavLink>
+                        <i className={ item.icon } ></i> { item.text } </NavLink>
                 </li>
             );
         });
 
         return (
             <div className="page-header c-home-sub-header">
-                <nav className="navbar mega-menu " role="navigation">
+                { /* <nav className="navbar mega-menu " role="navigation"> */ }
+                <nav className="navbar mega-menu">
                     <div>
                         <div className="nav-collapse collapse navbar-collapse navbar-responsive-collapse c-navbar-collapse-margin">
                             <ul className="nav navbar-nav">
@@ -41,7 +48,7 @@ class PrimaryHeader extends Component {
     }
 }
  
-export default withRouter(PrimaryHeader);
+export default withRouter(HomeSubHeader);
 
 /*
 

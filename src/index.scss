@@ -11,3 +11,26 @@ body {
 #root {
 	height:100%;
 }
+
+
+/* common css for the whole app */
+.c-center {
+	text-align: center;
+}
+.c-right {
+	text-align: right;
+}
+.c-v-center {
+	vertical-align: middle;
+}
+.c-show {
+	display: block;
+}
+.c-hide {
+	display: none;
+}
+
+.c-border {
+	border: 1px solid red;
+}
+
