@@ -1,0 +1,22 @@
+import React from 'react';
+import PropTypes from 'prop-types';
+import CInput from './CInput';
+
+import './SelectComponent.css';
+
+const InputComponent = ({ title, value, width=150, ...props }) => {
+
+  return (
+    <div className="form-group c-select-component-container " >
+      <label className="control-label c-select-title c-right" style={{ width: width }}>{ title }: </label>
+      <div className="c-select-body"><CInput value={ value } { ...props } /></div>
+    </div>
+  );
+};
+
+InputComponent.propTypes = {
+    title: PropTypes.string,
+    value: PropTypes.string,
+};
+
+export default InputComponent;

@@ -1,11 +1,10 @@
 import React from 'react';
 
-import TitleBar from  '../../../components/ui/TitleBar';
+//import TitleBar from  '../../../components/ui/TitleBar';
 import ResetButton from  '../../../components/ui/ResetButton';
-import SearchButton from  '../../../components/ui/SearchButton';
+import SubmitButton from  '../../../components/ui/SubmitButton';
 import PrintButton from  '../../../components/ui/PrintButton';
 import ResultConclusion from  '../../../components/ui/ResultConclusion';
-import CPagination from  '../../../components/ui/CPagination';
 
 import AssetType from  '../../../components/AssetType';
 import InvestorAccount from  '../../../components/InvestorAccount';
@@ -28,17 +27,20 @@ const AccountSummaryPage = () => {
 
   return (
     <div className="c-account-summary-container">
-      <TitleBar>Investments</TitleBar>
         
       <div className="c-search-toolbar portlet light bordered">
-        <div className="col-md-6"><AssetType /></div>
+        <ResultTitle mainTitle="Investments" subTitle="" className="c-search-toolbar-title" /> 
+        <br />
+        <div className="row">
+          <div className="col-md-6"><AssetType /></div>
+        </div>
         <div className="row">
           <div className="col-md-6"><InvestorAccount /></div>
           <div className="col-md-6"><InvestmentDate /></div>
         </div>
         <div className="c-button-row">
           <div className="c-reset-button"><ResetButton><i className='fa fa-rotate-left' /> Reset</ResetButton></div>
-          <SearchButton><i className='fa fa-search' /> Search</SearchButton>
+          <SubmitButton><i className='fa fa-search' /> Search</SubmitButton>
         </div>
       </div>
 
@@ -54,7 +56,6 @@ const AccountSummaryPage = () => {
           <ResultTable headers={AccountSummaryResultHeader} data={AccountSummaryResultData} checkBox={ false } />
           <div className="c-search-result-footer">
             <ResultConclusion >Total Balance ($): 1000</ResultConclusion>
-            <CPagination />
           </div>
         </div>
       </div>

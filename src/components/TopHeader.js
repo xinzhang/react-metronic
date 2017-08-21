@@ -23,8 +23,11 @@ const TopHeader = ({ history }) => {
                         </button>
                         { /* End Toggle Button */ }
                         { /* BEGIN LOGO */ }
-                        <a id="index" className="page-logo" href="index.html">
-                            <img src={ logo } className="c-logo-img" alt="NAB Asset Servicing" title="NAB Asset Servicing" /> </a>
+                        <div className="page-logo" >
+                            <NavLink to="/app/home" exact> 
+                                <img src={ logo } className="c-logo-img" alt="NAB Asset Servicing" title="NAB Asset Servicing" /> 
+                            </NavLink>
+                        </div>
                         { /* END LOGO */ }
                         { /* BEGIN SEARCH */ }
                         <form className="search" action="extra_search.html" method="GET">

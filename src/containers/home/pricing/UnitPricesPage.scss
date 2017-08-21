@@ -1,0 +1,35 @@
+.c-unit-prices-container {
+    padding: 15px;
+
+    .c-unit-prices-title {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .c-search-result-container {
+        display: flex;
+        flex-direction: column;
+        
+        .c-search-result-titlebar {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+
+            .c-search-result-buttons {
+                align-items: flex-end;
+                
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: flex-start;
+
+                .c-fund-selector {
+                    margin-right: 5px;
+                }
+            }
+        }
+    }
+}

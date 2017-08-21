@@ -1,0 +1,9 @@
+.c-fund-summary-container {
+  padding: 15px; }
+  .c-fund-summary-container .c-fund-summary-title {
+    margin-bottom: 20px; }
+  .c-fund-summary-container .c-search-result-titlebar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 10px; }

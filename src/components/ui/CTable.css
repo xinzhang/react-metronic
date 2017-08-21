@@ -1,12 +1,13 @@
 .c-fixed-table-container {
-  height: 194px;
-  /* set the buttom of the table */
-  padding-bottom: 45px; }
+  /* set the buttom of the table */ }
   .c-fixed-table-container .c-fixed-table-header {
     margin-right: 0px;
-    height: 45px;
+    height: 45px; }
+  .c-fixed-table-container .c-fixed-table-header-noaction {
+    /* set the header edge */ }
+  .c-fixed-table-container .c-fixed-table-header-action {
     /* set the header edge */
-    padding-right: 17px; }
+    padding-right: 27px; }
 
 .c-bs-checkbox {
   width: 30px; }

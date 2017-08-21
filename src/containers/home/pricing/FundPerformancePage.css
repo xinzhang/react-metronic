@@ -1,0 +1,33 @@
+.c-performance-container {
+  padding: 15px; }
+  .c-performance-container .c-performance-title {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center; }
+  .c-performance-container .c-search-result-container {
+    display: flex;
+    flex-direction: column; }
+    .c-performance-container .c-search-result-container .c-search-result-titlebar {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center; }
+      .c-performance-container .c-search-result-container .c-search-result-titlebar .c-search-result-buttons {
+        align-items: flex-end;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start; }
+        .c-performance-container .c-search-result-container .c-search-result-titlebar .c-search-result-buttons .c-fund-selector {
+          margin-right: 5px; }
+    .c-performance-container .c-search-result-container .c-snapshot-table {
+      margin-top: 20px; }
+    .c-performance-container .c-search-result-container .c-growth-overview-title {
+      margin-top: 20px;
+      border-bottom-style: double;
+      border-bottom-color: #ddd; }
+    .c-performance-container .c-search-result-container .c-growth-overview-body {
+      margin-top: 20px; }
+      .c-performance-container .c-search-result-container .c-growth-overview-body .c-growth-overview-img {
+        width: 100%; }

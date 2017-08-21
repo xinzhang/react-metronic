@@ -1,7 +1,7 @@
 import React from 'react';
 import CButton from './CButton';
 
-const SearchButton = ({ children }) => {
+const SubmitButton = ({ children }) => {
 
     return (
         <div>
@@ -12,4 +12,4 @@ const SearchButton = ({ children }) => {
     );
 };
  
-export default SearchButton;
+export default SubmitButton;

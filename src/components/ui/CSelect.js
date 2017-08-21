@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './CSelect.css';
 
-const CSelect = ({ dataArr, defaultValue, size=200 }) => {
+const CSelect = ({ dataArr=[], defaultValue, size=200 }) => {
     let liClass = "", ariaSelected = false;
     let defaultText = defaultValue;
 

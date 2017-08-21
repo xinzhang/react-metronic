@@ -1,14 +1,23 @@
 .c-fixed-table-container {
     //height: 186px; padding-bottom: 40px;
-    height: 194px; 
+    // height: 250px;  /* has right scroll bar */
+ 
     /* set the buttom of the table */
-    padding-bottom: 45px;
+    //padding-bottom: 45px;
 
     .c-fixed-table-header {
         margin-right: 0px;
-        height: 45px;
+        height: 45px;      
+    }
+
+    .c-fixed-table-header-noaction {
         /* set the header edge */
-        padding-right: 17px;
+        // padding-right: 17px;  /* has right scroll bar */
+    }
+
+    .c-fixed-table-header-action {
+        /* set the header edge */
+        padding-right: 27px;
     }
 }
 
@@ -34,5 +43,3 @@
 
 }
 
-.c-border {
-}

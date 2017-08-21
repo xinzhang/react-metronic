@@ -2,7 +2,6 @@ import React from 'react';
 import ResultTitle from  '../../../components/ResultTitle';
 import PrintButton from  '../../../components/ui/PrintButton';
 import ResultConclusion from  '../../../components/ui/ResultConclusion';
-import CPagination from  '../../../components/ui/CPagination';
 
 import PortfolioInfo from './PortfolioInfo';
 import AccountSelector from './AccountSelector';
@@ -17,7 +16,7 @@ const PortfolioSummaryPage = () => {
 
   return (
     <div className="c-portfolio-container">
-        <div className="portlet light bordered c-portfoliao-title">
+        <div className="portlet light bordered c-portfolio-title">
           <div className="col-md-6"><PortfolioInfo /></div>
           <div className="col-md-6"><AccountSelector /></div>
         </div>
@@ -30,13 +29,11 @@ const PortfolioSummaryPage = () => {
             <div className="c-center c-result-title"><ResultTitle mainTitle="Asset Type <e.g. Managed Funds>" /></div>
             <ResultTable headers={ PortfolioFundResultHeader } data={ PortfolioFundResultData}  checkBox={ false } />
             <ResultConclusion >Total Balance ($): 2000</ResultConclusion>
-            <CPagination />
           </div>
           <div className="c-search-result-body-deposit">
             <div className="c-center c-result-title"><ResultTitle mainTitle="Asset Type <i.e. Term Deposits>" /></div>
             <ResultTable headers={ PortfolioDepositResultHeader } data={ PortfolioDepositResultData}  checkBox={ false } />
             <ResultConclusion >Total Balance ($): 3000</ResultConclusion>
-            <CPagination />
           </div>
         </div>
     </div>

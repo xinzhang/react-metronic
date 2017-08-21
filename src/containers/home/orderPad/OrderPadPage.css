@@ -1,0 +1,10 @@
+.c-order-pad-container {
+  padding: 15px; }
+  .c-order-pad-container .c-order-pad-title {
+    margin-bottom: 20px; }
+  .c-order-pad-container .c-button-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end; }
+    .c-order-pad-container .c-button-row .c-reset-button {
+      margin-right: 5px; }

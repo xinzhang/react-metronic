@@ -1,0 +1,107 @@
+export const InProcessHeader = [
+    {
+        name: 'asset_type',
+        text: 'Type',
+    },
+    {
+        name: 'portfolio',
+        text: 'Portfolio',
+    },
+    {
+        name: 'buy_sell',
+        text: 'Buy/Sell',
+    },
+    {
+        name: 'price',
+        text: 'Price',
+    },
+    {
+        name: 'fund_name',
+        text: 'Fund',
+    },
+    {
+        name: 'amount',
+        text: 'Amount',
+    },
+    {
+        name: 'unit_amount',
+        text: 'Unit',
+    },
+    {
+        name: 'payment',
+        text: 'Payment',
+    },
+];
+
+export const InProcessData = [
+    {
+        asset_type: 'Fund',
+        portfolio: 'fund',
+        buy_sell: 'buy',
+        price: '20',
+        fund_name: 'Fund One',
+        amount: '100',
+        unit_amount: '10',
+        payment: 'test',
+    },
+    {
+        asset_type: 'Fund',
+        portfolio: 'fund',
+        buy_sell: 'buy',
+        price: '20',
+        fund_name: 'Fund One',
+        amount: '100',
+        unit_amount: '10',
+        payment: 'test',
+    },
+    {
+        asset_type: 'Fund',
+        portfolio: 'fund',
+        buy_sell: 'buy',
+        price: '20',
+        fund_name: 'Fund One',
+        amount: '100',
+        unit_amount: '10',
+        payment: 'test',
+    },
+    {
+        asset_type: 'Fund',
+        portfolio: 'fund',
+        buy_sell: 'buy',
+        price: '20',
+        fund_name: 'Fund One',
+        amount: '100',
+        unit_amount: '10',
+        payment: 'test',
+    },
+    {
+        asset_type: 'Fund',
+        portfolio: 'fund',
+        buy_sell: 'buy',
+        price: '20',
+        fund_name: 'Fund One',
+        amount: '100',
+        unit_amount: '10',
+        payment: 'test',
+    },
+    {
+        asset_type: 'Fund',
+        portfolio: 'fund',
+        buy_sell: 'buy',
+        price: '20',
+        fund_name: 'Fund One',
+        amount: '100',
+        unit_amount: '10',
+        payment: 'test',
+    },
+    {
+        asset_type: 'Fund',
+        portfolio: 'fund',
+        buy_sell: 'buy',
+        price: '20',
+        fund_name: 'Fund One',
+        amount: '100',
+        unit_amount: '10',
+        payment: 'test',
+    },
+];

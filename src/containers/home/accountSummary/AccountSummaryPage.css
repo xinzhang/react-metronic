@@ -1,9 +1,10 @@
 .c-account-summary-container {
   padding: 15px; }
   .c-account-summary-container .c-search-toolbar {
-    margin-top: 10px;
     display: flex;
     flex-direction: column; }
+    .c-account-summary-container .c-search-toolbar .c-search-toolbar-title {
+      margin-bottom: 20px; }
     .c-account-summary-container .c-search-toolbar .c-button-row {
       display: flex;
       flex-direction: row;

@@ -42,6 +42,6 @@ export const AccountSummaryResultData = [
     {
         number: '000003',
         name: 'test3',
-        balance: '200',
+        balance: '999',
     },
 ];
