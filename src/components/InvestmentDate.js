@@ -3,13 +3,13 @@ import DateComponent from './ui/DateComponent';
 import { getDate } from '../utils/DateService';
 
 
-const InvestmentDate = () => {
+const InvestmentDate = ({ ...props }) => {
     let title = "Investments as at";
     let value = getDate();
 
     return (
         <div>
-            <DateComponent title={ title } value={ value } />
+            <DateComponent title={ title } value={ value } { ...props } />
         </div>
     );
 };

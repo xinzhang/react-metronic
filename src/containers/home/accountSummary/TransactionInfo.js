@@ -10,7 +10,7 @@ const TransactionInfo = () => {
     let today = getDate();
     let fundName = 'Fund Name 1'
     let accountTotalValue = 1000;
-    let text = `As at  ${ today }, your \"${ fundName }\" value is ${ accountTotalValue }.`;
+    let text = `As at  ${ today }, your "${ fundName }" value is ${ accountTotalValue }.`;
 
     return (
     <div>

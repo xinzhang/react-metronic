@@ -84,6 +84,7 @@
 	// Picker object
 
 	var Datepicker = function(element, options){
+		
 		$(element).data('datepicker', this);
 		this._process_options(options);
 

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const CInput = ({ className, type='text', name, value="", size='21', placeholder, onChange, ...props }) => {
     return (
-        <input className={ `form-control ${ className }` } type={ type } name={ name } value={ value } size={ size } placeholder={ placeholder } />
+        <input className={ `form-control ${ className }` } type={ type } name={ name } size={ size } placeholder={ placeholder } />
     );
 };
 
