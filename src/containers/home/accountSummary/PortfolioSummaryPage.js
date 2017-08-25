@@ -1,11 +1,11 @@
 import React from 'react';
 import ResultTitle from  '../../../components/ResultTitle';
-import PrintButton from  '../../../components/ui/PrintButton';
+import SubmitButton from  '../../../components/ui/SubmitButton';
 import ResultConclusion from  '../../../components/ui/ResultConclusion';
+import SelectComponent from  '../../../components/ui/SelectComponent';
+import CTable from  '../../../components/ui/CTable';
 
 import PortfolioInfo from './PortfolioInfo';
-import AccountSelector from './AccountSelector';
-import ResultTable from  './ResultTable';
 
 import { PortfolioFundResultHeader, PortfolioFundResultData, 
           PortfolioDepositResultHeader, PortfolioDepositResultData } from './PortfolioSummaryData';
@@ -13,26 +13,40 @@ import { PortfolioFundResultHeader, PortfolioFundResultData,
 import './PortfolioSummaryPage.css';
 
 const PortfolioSummaryPage = () => {
+  const AccountData = [
+    {
+        text: 'Account 1',
+        value: 'account_1',
+    },
+    {
+        text: 'Account 2',
+        value: 'account_2',
+    },
+    {
+        text: 'Account 3',
+        value: 'account_3',
+    },
+  ];
 
   return (
     <div className="c-portfolio-container">
         <div className="portlet light bordered c-portfolio-title">
           <div className="col-md-6"><PortfolioInfo /></div>
-          <div className="col-md-6"><AccountSelector /></div>
+          <div className="col-md-6"><SelectComponent title="Select an Account" dataArr={ AccountData } /></div>
         </div>
         <div className="c-search-result-container portlet light bordered">
           <div className="c-search-result-titlebar">
             <ResultTitle mainTitle="" subTitle="Select an Investment Fund in the table below to view the individual Transaction History" />
-            <PrintButton><i className='fa fa-print' title="Print this report" /></PrintButton>
+            <SubmitButton><i className='fa fa-print' title="Print this report" /></SubmitButton>
           </div>
           <div className="c-search-result-body-fund">
             <div className="c-center c-result-title"><ResultTitle mainTitle="Asset Type <e.g. Managed Funds>" /></div>
-            <ResultTable headers={ PortfolioFundResultHeader } data={ PortfolioFundResultData}  checkBox={ false } />
+            <CTable headers={ PortfolioFundResultHeader } data={ PortfolioFundResultData}  checkBox={ false } />
             <ResultConclusion >Total Balance ($): 2000</ResultConclusion>
           </div>
           <div className="c-search-result-body-deposit">
             <div className="c-center c-result-title"><ResultTitle mainTitle="Asset Type <i.e. Term Deposits>" /></div>
-            <ResultTable headers={ PortfolioDepositResultHeader } data={ PortfolioDepositResultData}  checkBox={ false } />
+            <CTable headers={ PortfolioDepositResultHeader } data={ PortfolioDepositResultData}  checkBox={ false } />
             <ResultConclusion >Total Balance ($): 3000</ResultConclusion>
           </div>
         </div>

@@ -2,6 +2,9 @@ export const AccountSummaryResultHeader = [
     {
         name: 'number',
         text: 'Account Number',
+        linkFlag: true,
+        link: '/app/home/account-summary/portfolio-summary/:accountNumber=',
+        tips: 'Go to the Portfolio Summary of this account',
     },
     {
         name: 'name',
@@ -10,38 +13,5 @@ export const AccountSummaryResultHeader = [
     {
         name: 'balance',
         text: 'Balance ($)',
-    },
-];
-
-export const AccountSummaryResultData = [
-    {
-        number: '000001',
-        name: 'test1',
-        balance: '123',
-    },
-    {
-        number: '000002',
-        name: 'test2',
-        balance: '100',
-    },
-    {
-        number: '000003',
-        name: 'test3',
-        balance: '200',
-    },
-    {
-        number: '000003',
-        name: 'test3',
-        balance: '200',
-    },
-    {
-        number: '000003',
-        name: 'test3',
-        balance: '200',
-    },
-    {
-        number: '000003',
-        name: 'test3',
-        balance: '999',
     },
 ];

@@ -2,7 +2,7 @@ var ComponentsDateTimePickers = function () {
 
     var handleDatePickers = function () {
 
-        if (jQuery().datepicker) { console.log($('.date-picker'));
+        if (jQuery().datepicker) { 
             $('.date-picker').datepicker({
                 rtl: App.isRTL(),
                 orientation: "left",

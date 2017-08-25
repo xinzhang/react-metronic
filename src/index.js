@@ -9,6 +9,9 @@ import App from './App';
 
 import './index.css';
 
+//init store dispatch
+
+
 //ReactDOM.render(<App />, document.getElementById('root'));
 ReactDOM.render((
     <Provider store={ store } >

@@ -1,10 +1,10 @@
 import React from 'react';
 import ResultTitle from  '../../../components/ResultTitle';
-import PrintButton from  '../../../components/ui/PrintButton';
+import SubmitButton from  '../../../components/ui/SubmitButton';
 import CTable from  '../../../components/ui/CTable';
+import SelectComponent from  '../../../components/ui/SelectComponent';
 
 import PerformanceInfo from './PerformanceInfo';
-import FundSelector from './FundSelector';
 
 import { PerformanceHeader, PerformanceData, 
           SnapshotHeader, SnapshotData } from './PerformanceData';
@@ -12,6 +12,21 @@ import growthOverviewImg from '../../../assets/images/growth-overview.png';
 import './FundPerformancePage.css';
 
 const FundPerformancePage = () => {
+
+  const fundArr = [
+    {
+        text: 'Fund 1',
+        value: 'fund_1',
+    },
+    {
+        text: 'Fund 2',
+        value: 'fund_1',
+    },
+    {
+        text: 'Fund 3',
+        value: 'fund_1',
+    },
+  ];
 
   return (
     <div className="c-performance-container">
@@ -22,8 +37,8 @@ const FundPerformancePage = () => {
         <div className="c-search-result-titlebar">
           <ResultTitle mainTitle="" subTitle="Select an Fund Name to view the individual performance" />
           <div className="c-search-result-buttons">
-            <div className="c-fund-selector"><FundSelector /></div>
-            <PrintButton><i className='fa fa-print' title="Print this report" /></PrintButton>
+            <div className="c-fund-selector"><SelectComponent title="Select an Fund" dataArr={ fundArr } /></div>
+            <SubmitButton><i className='fa fa-print' title="Print this report" /></SubmitButton>
           </div>
         </div>
         <div>

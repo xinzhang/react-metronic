@@ -4,8 +4,8 @@ import AssetType from  '../../../components/AssetType';
 import CTable from  '../../../components/ui/CTable';
 import ResetButton from  '../../../components/ui/ResetButton';
 import SubmitButton from  '../../../components/ui/SubmitButton';
+import SelectComponent from  '../../../components/ui/SelectComponent';
 import BuySellSelector from './BuySellSelector';
-import FundNameSelector from './FundNameSelector';
 import InputComponent from '../../../components/ui/InputComponent';
 
 import { OrderPadHeader, OrderPadData } from './OrderPadData';
@@ -13,6 +13,21 @@ import { OrderPadHeader, OrderPadData } from './OrderPadData';
 import './OrderPadPage.css';
 
 const OrderPadPage = () => {
+  const FundData = [
+    {
+        text: 'Fund 1',
+        value: 'fund_1',
+    },
+    {
+        text: 'Fund 2',
+        value: 'fund_2',
+    },
+    {
+        text: 'Fund 3',
+        value: 'fund_3',
+    },
+  ];
+
   return (
     <div className="c-order-pad-container">
       <div className="portlet light bordered">
@@ -23,7 +38,7 @@ const OrderPadPage = () => {
         </div>
         <div className="row">
         <div className="col-md-6"><BuySellSelector /></div>
-        <div className="col-md-6"><FundNameSelector /></div>
+        <div className="col-md-6"><SelectComponent title="Fund Name" dataArr={ FundData } /></div>
         </div>
         <div className="row">
         <div className="col-md-6"><InputComponent title="$ Amount" value="100" /></div>

@@ -1,12 +1,11 @@
 import React from 'react';
 import ResultTitle from  '../../../components/ResultTitle';
-import PrintButton from  '../../../components/ui/PrintButton';
+import SubmitButton from  '../../../components/ui/SubmitButton';
 import CPagination from  '../../../components/ui/CPagination';
+import SelectComponent from  '../../../components/ui/SelectComponent';
+import CTable from  '../../../components/ui/CTable';
 
 import TransactionInfo from './TransactionInfo';
-import FundSelector from './FundSelector';
-import TermDepositSelector from './TermDepositSelector';
-import ResultTable from  './ResultTable';
 import TransactionToolBar from './TransactionToolBar';
 
 import { TransactionFundResultHeader, TransactionFundResultData, 
@@ -15,6 +14,35 @@ import { TransactionFundResultHeader, TransactionFundResultData,
 import './TransactionHistoryPage.css'
 
 const TransactionHistoryPage = () => {
+  const FundData = [
+    {
+        text: 'Fund 1',
+        value: 'fund_1',
+    },
+    {
+        text: 'Fund 2',
+        value: 'fund_2',
+    },
+    {
+        text: 'Fund 3',
+        value: 'fund_3',
+    },
+  ];
+
+  const TermDepositData = [
+    {
+        text: 'TD 1',
+        value: 'td_1',
+    },
+    {
+        text: 'TD 2',
+        value: 'td_2',
+    },
+    {
+        text: 'TD 3',
+        value: 'td_3',
+    },
+  ];
 
   return (
     <div className="c-transaction-history-container">
@@ -23,18 +51,18 @@ const TransactionHistoryPage = () => {
         </div>
         <div className="portlet light bordered">
           <div className="c-right">
-            <PrintButton><i className='fa fa-print' title="Print this report" /></PrintButton>
+            <SubmitButton><i className='fa fa-print' title="Print this report" /></SubmitButton>
           </div>
           <div className="c-search-result-body-fund">
             <div className="c-center c-result-title"><ResultTitle mainTitle="Asset Type <e.g. Managed Funds>" /></div>
-            <div className="c-fund-selector"><FundSelector /></div>
-            <ResultTable headers={ TransactionFundResultHeader } data={ TransactionFundResultData}  checkBox={ false } />
+            <div className="c-fund-selector"><SelectComponent title="Select an Investment Fund to view the individual Transaction History" width={500} dataArr={ FundData } /></div>
+            <CTable headers={ TransactionFundResultHeader } data={ TransactionFundResultData}  checkBox={ false } />
             <CPagination />
           </div>
           <div className="c-search-result-body-deposit">
             <div className="c-center c-result-title"><ResultTitle mainTitle="Asset Type <i.e. Term Deposits>" /></div>
-            <div className="c-fund-selector"><TermDepositSelector /></div>
-            <ResultTable headers={ TransactionDepositResultHeader } data={ TransactionDepositResultData}  checkBox={ false } />
+            <div className="c-fund-selector"><SelectComponent title="Select an Investment Fund to view the individual Transaction History: " width={500} dataArr={ TermDepositData } /></div>
+            <CTable headers={ TransactionDepositResultHeader } data={ TransactionDepositResultData}  checkBox={ false } />
             <CPagination />
           </div>
           <div className="c-result-transaction-toolbar">

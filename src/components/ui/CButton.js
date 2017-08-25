@@ -3,7 +3,10 @@ import PropTypes from 'prop-types';
 
 const CButton = ({ children, className, type='button', onClick, ...props }) => {
     return (
-        <button type={ type } className={ `btn ${ className }` } { ...props } >{ children }</button>
+        <button 
+            type={ type } 
+            className={ `btn ${ className }` } 
+            onClick={ onClick } >{ children }</button>
     );
 };
 

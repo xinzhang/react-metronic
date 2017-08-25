@@ -8,7 +8,7 @@ const DateComponent = ({ title, ...props }) => {
   return (
     <div className="form-group c-date-component-container" >
       <label className="control-label c-date-component-title c-right">{ title }:</label>
-      <div className=""><CDate { ...props } /></div>
+      <div><CDate { ...props } /></div>
     </div>
   );
 };

@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
+import { NavLink } from 'react-router-dom';
 import CCheckBox from './CCheckBox';
 import CButton from './CButton';
 import './CTable.css';
@@ -11,17 +12,12 @@ import './CTable.css';
 // import './bootstrap-table.css';
 
 class CTable extends Component {
-    constructor(props) {
-        super(props);
-    }
+    // constructor(props) {
+    //     super(props);
+    // }
     
-    componentDidMount() {     
-        // console.log($('[data-toggle="table"]'));  
-        // $('[data-toggle="table"]').bootstrapTable();
-    }
-
     render() {
-        const { headers, data, checkBox, action=false, ...props } = this.props;
+        const { headers, data, checkBox, action=false } = this.props;
 
         let checkBoxClass = checkBox ? 'c-display' : 'c-hide';
         let actionHeaderTh = (action) => {
@@ -50,9 +46,15 @@ class CTable extends Component {
                         <CCheckBox name="btSelectItem" />
                     </td>
                     {
-                        headers.map((headerObj, objIndex) => {                        
+                        headers.map((headerObj, objIndex) => {        
+                            let columnValue = item[headerObj.name]; 
+                            let columnHTML = columnValue;
+                            
+                            if (headerObj.linkFlag) 
+                                columnHTML = ( <NavLink to={ headerObj.link + columnValue } title={ headerObj.tips }>{ columnValue }</NavLink> );
+                                              
                             return (
-                                <td key={ objIndex } className="c-center">{ item[headerObj.name] }</td>
+                                <td key={ objIndex } className="c-center">{ columnHTML }</td>
                             );
                         })                    
                     }

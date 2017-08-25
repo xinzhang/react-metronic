@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 const CCheckBox = ({ className, value, name, text="", onClick, ...props }) => {
     return (
         <label className={ `mt-checkbox mt-checkbox-single mt-checkbox-outline ${ className }` } > { text }
-            <input type="checkbox" value={ value } name={ name } />
+           <input type="checkbox" value={ value } name={ name } />
             <span></span>
-        </label>
+        </label> 
     );
 };
 

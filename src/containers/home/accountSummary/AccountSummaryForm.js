@@ -1,47 +1,118 @@
-import React from 'react';
-import InputComponent from  '../../../components/ui/InputComponent';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 import ResetButton from  '../../../components/ui/ResetButton';
 import SubmitButton from  '../../../components/ui/SubmitButton';
+import SelectComponent from  '../../../components/ui/SelectComponent';
+import DateComponent from  '../../../components/ui/DateComponent';
 import AssetType from  '../../../components/AssetType';
-import InvestorAccount from  '../../../components/InvestorAccount';
-import InvestmentDate from  '../../../components/InvestmentDate';
 import ResultTitle from  '../../../components/ResultTitle';
 
-const AccountSummaryForm = (props) => {
-    const { handleSubmit, pristine, reset, submitting } = props;
+import { searchAccountSummary } from '../../../actions/accountSummaryAction';
 
-    const updateSearchState = (event) => {
-        const field = event.target.name;
-        const prod = this.state.product;
-        prod[field] = event.target.value;
-        return this.setState({product: prod});
-    };
-
-    return (
-        <form>
-            <ResultTitle mainTitle="Investments" className="c-search-toolbar-title" /> 
-            <br />
-            <div className="row">
-                <div className="col-md-6">
-                    <AssetType onChange={ this.updateSearchState }/>
-                </div>
-            </div>
-            <div className="row">
-                <div className="col-md-6"><InvestorAccount name="investorAccount" onChange={ this.updateSearchState } /></div>
-                <div className="col-md-6"><InvestmentDate onChange={ this.updateProductState } /></div>
-            </div>
-            <div className="c-button-row">
-                <div className="c-reset-button">
-                    <ResetButton onClick={ reset }><i className='fa fa-rotate-left' /> Reset</ResetButton>
-                </div> 
-                <SubmitButton onClick={ this.handleSearch } disabled={!this.state.canSubmit} ><i className='fa fa-search' /> Search</SubmitButton>
-            </div>
-        </form>
-    );
+const mapDispatchToProps = (dispatch) => {
+    return {
+        onSubmitClick: (obj) => { 
+            dispatch(searchAccountSummary(obj));
+        }, 
+    }
 };
 
-export default AccountSummaryForm;
+const INITIAL_STATE = {
+    search: {
+        assetType: 'term_deposit',
+        investorAccount: 'account_2',
+        investmentDate: '21/08/2017',
+    },
+};
+
+class AccountSummaryForm extends Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            search: { ...INITIAL_STATE.search },
+        };
+
+        this.handleReset = this.handleReset.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleDataChange = this.handleDataChange.bind(this);
+    }
+
+    handleReset() {      
+        this.setState({
+            search: { ...INITIAL_STATE.search },
+        });
+    }
+
+    handleSubmit() {
+        this.props.onSubmitClick(this.state.search);
+    }
+
+    handleDataChange(event) {
+        let field = event.target.name;  
+        let search = { ...this.state.search };
+        search[field] = event.target.value; 
+        return this.setState({ search: search });
+    }        
+
+    render() {
+        // will be rewitten, get the data from API
+        const investorAccountArr =  [
+            {
+                text: '--- All account ---',
+                value: '',
+            },
+            {
+                text: 'account 1',
+                value: 'account_1',
+            },
+            {
+                text: 'account 2',
+                value: 'account_2',
+            },
+            {
+                text: 'account 3',
+                value: 'account_3',
+            },
+        ];
+
+        const { search } = this.state;
+
+        return (
+            <div className="c-search-toolbar portlet light bordered">
+            <form onSubmit={ this.submit } method="post" >
+                <ResultTitle mainTitle="Investments" className="c-search-toolbar-title" /> 
+                <br />
+                <div className="row">
+                    <div className="col-md-6">
+                        <AssetType value={ search.assetType } name="assetType" onChange={ this.handleDataChange }/>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-md-6">
+                        <SelectComponent title="Investor Account" name="investorAccount" dataArr={ investorAccountArr } value={ search.investorAccount } onChange={ this.handleDataChange } />
+                    </div>
+                    <div className="col-md-6">
+                        <DateComponent title="Investments as at" name="investmentDate" value={ search.investmentDate } onChange={ this.handleDataChange } />
+                    </div>
+                </div>
+                <div className="c-button-row">
+                    <div className="c-reset-button">
+                        <ResetButton onClick={ this.handleReset }><i className='fa fa-rotate-left' /> Reset</ResetButton>
+                    </div> 
+                    <SubmitButton onClick={ this.handleSubmit }  ><i className='fa fa-search' /> Search</SubmitButton>
+                </div>
+            </form>
+            </div>
+        );
+    };
+};
+
+export default connect(
+    null,
+    mapDispatchToProps
+)(AccountSummaryForm);
 
 
 /*

@@ -5,15 +5,15 @@ const CPagination = ({ className, onClick, ...props }) => {
     return (
         <div className="pull-right pagination" >
             <ul className="pagination">
-                <li className="page-first disabled"><a href="#">«</a></li>
-                <li className="page-pre disabled"><a href="#">‹</a></li>
-                <li className="page-number active"><a href="#">1</a></li>
-                <li className="page-number"><a href="#">2</a></li>
-                <li className="page-number"><a href="#">3</a></li>
-                <li className="page-number"><a href="#">4</a></li>
-                <li className="page-number"><a href="#">5</a></li>
-                <li className="page-next"><a href="#">›</a></li>
-                <li className="page-last"><a href="#">»</a></li>
+                <li className="page-first disabled"><a href="/first">«</a></li>
+                <li className="page-pre disabled"><a href="/pre">‹</a></li>
+                <li className="page-number active"><a href="/1">1</a></li>
+                <li className="page-number"><a href="/2">2</a></li>
+                <li className="page-number"><a href="/3">3</a></li>
+                <li className="page-number"><a href="/4">4</a></li>
+                <li className="page-number"><a href="/5">5</a></li>
+                <li className="page-next"><a href="/next">›</a></li>
+                <li className="page-last"><a href="/end">»</a></li>
             </ul>
         </div>
     );

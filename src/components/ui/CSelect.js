@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './CSelect.css';
 
-const CSelect = ({ dataArr, defaultValue, size=200, ...props }) => {
-    let liClass = "", ariaSelected = false;
-    let defaultText = defaultValue;
+const CSelect = ({ dataArr, name, value, size=200, ...props }) => {
+    // let liClass = "", ariaSelected = false;
+    // let defaultText = defaultValue;
 
     // let liContent = dataArr.map((item, index) => {
     //     liClass = "";
@@ -25,8 +25,8 @@ const CSelect = ({ dataArr, defaultValue, size=200, ...props }) => {
     //     );
     // });
 
-    let optionContent = dataArr.map((item, index) => {
-        return <option key={ index } value={ item.value }>{ item.text }</option>;
+    let optionContent = dataArr.map((item, index) => {      
+        return <option key={ index } value={ item.value } >{ item.text }</option>;
     });
 
     return (
@@ -46,9 +46,11 @@ const CSelect = ({ dataArr, defaultValue, size=200, ...props }) => {
         //         { optionContent }
         //     </select>
         // </div>
-        <select className="bs-select form-control" style={{ width: size }} onChange={ props.onChange } >
-            { optionContent }
-        </select>
+        <div>
+            <select className="bs-select form-control" style={{ width: size }} name={ name } value={ value } onChange={ props.onChange } >
+                { optionContent }
+            </select>
+        </div>
     );
 };
 
