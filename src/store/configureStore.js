@@ -46,7 +46,7 @@ const store = createStore(
     rootReducer,
     applyMiddleware(
         thunk,
-        promiseMiddleware
+        promiseMiddleware()
     )
 );
 

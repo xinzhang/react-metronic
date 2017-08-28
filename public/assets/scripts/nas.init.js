@@ -1,4 +1,3 @@
-
 // if (jQuery().datepicker) { 
     $('.date-picker').datepicker({
         rtl: App.isRTL(),

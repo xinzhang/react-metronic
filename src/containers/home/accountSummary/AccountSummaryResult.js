@@ -9,7 +9,7 @@ import CTable from  '../../../components/ui/CTable';
 import ResultTitle from  '../../../components/ResultTitle';
 
 import { printAccountSummary } from '../../../actions/accountSummaryAction';
-import { AccountSummaryResultHeader } from './AccountSummaryData';
+import { AccountSummaryResultHeader } from './AccountSummaryResultHeader';
 
 const mapStateToProps = (state) => {
     return {

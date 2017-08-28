@@ -12,7 +12,7 @@ import { PortfolioFundResultHeader, PortfolioFundResultData,
 
 import './PortfolioSummaryPage.css';
 
-const PortfolioSummaryPage = () => {
+const PortfolioSummaryPage = ({ match }) => {
   const AccountData = [
     {
         text: 'Account 1',
@@ -27,6 +27,9 @@ const PortfolioSummaryPage = () => {
         value: 'account_3',
     },
   ];
+  
+  // get the accountNo from params
+  //console.log(match.params.accountNo);
 
   return (
     <div className="c-portfolio-container">

@@ -13,8 +13,7 @@ class CDate extends Component {
 
         return (
             <div>
-                <Script
-                    url="/assets/scripts/nas.init.js" />
+                <Script url="/assets/scripts/nas.init.js" />
                 <div className="input-group date form_datetime bs-datetime date-picker">
                     <input 
                         id='dateInput'

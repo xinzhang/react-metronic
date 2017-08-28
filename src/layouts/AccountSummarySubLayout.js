@@ -23,8 +23,9 @@ const AccountSummarySubLayout = ({ match }) => {
             <Switch> 
                 <Route path={ `${match.path}` } exact component={ AccountSummaryPage } />
                 <Route path={ `${match.path}/account-summary` } component={ AccountSummaryPage } />
-                <Route path={ `${match.path}/portfolio-summary` } component={ PortfolioSummaryPage } />
-                <Route path={ `${match.path}/transaction-history` } component={ TransactionHistoryPage } />
+                <Route path={ `${match.path}/portfolio-summary` } exact component={ PortfolioSummaryPage } />
+                <Route path={ `${match.path}/portfolio-summary/:accountNo` } component={ PortfolioSummaryPage } />
+                <Route path={ `${match.path}/transaction-history` } exact component={ TransactionHistoryPage } />
                 <Redirect to={ `${match.url}` } />
             </Switch>
         </div>

@@ -1,20 +1,23 @@
-import { SEARCH_ACCOUNT_SUMMARY, PRINT_ACCOUNT_SUMMARY } from '../constants/AccountSummary';
+import * as types from './actionTypes';
+import AccountSummaryApi from '../api/home/accountSummaryApi';
 
 export const searchAccountSummary = (search) => {
-    // prepare the promise of fetch
-    let request = "/ClientPortal/NAS/api/account_summary";
     return {
-        type: SEARCH_ACCOUNT_SUMMARY,
-        payload: request,
-        search: search,
+        type: types.SEARCH_ACCOUNT_SUMMARY,
+        payload: AccountSummaryApi.getAccountSummaryData(search),
     }
 };
 
 export const printAccountSummary = () => {
     return {
-        type: PRINT_ACCOUNT_SUMMARY,   
+        type: types.PRINT_ACCOUNT_SUMMARY,   
     }
 };
 
 
-
+// export const searchAccountSummary = (search) => {
+//     return {
+//         type: 'account_summary',
+//         payload: getAccountSummaryData(search)
+//     }
+// }

@@ -1,0 +1,32 @@
+[
+    {
+        "number": "000001",
+        "name": "account_1",
+        "balance": "123"
+    },
+    {
+        "number": "000002",
+        "name": "account_2",
+        "balance": "100"
+    },
+    {
+        "number": "000003",
+        "name": "account_3",
+        "balance": "200"
+    },
+    {
+        "number": "000003",
+        "name": "account_4",
+        "balance": "200"
+    },
+    {
+        "number": "000003",
+        "name": "account_5",
+        "balance": "200"
+    },
+    {
+        "number": "000003",
+        "name": "account_1",
+        "balance": "999"
+    }
+]
