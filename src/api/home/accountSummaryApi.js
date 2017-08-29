@@ -1,28 +1,31 @@
 import fetch from 'isomorphic-fetch';
-import { PREURL } from '../apiConfig';
+import _ from 'lodash';
+//import { PREURL } from '../apiConfig';
+
+function sleep(ms = 0) {
+    return new Promise(r => setTimeout(r, ms));
+}
 
 class AccountSummaryApi {        
-    static getAccountSummaryData = async (obj) => {
-        let url = PREURL + "/json/home/accountSummary/AccountSummaryData.json";
+    static getAccountSummaryData = async (obj, preUrl="") => {
+        let url = preUrl + "/json/home/accountSummary/AccountSummaryData.json";
 
-        console.log("search obj: " + JSON.stringify(obj));
+        const response = await fetch(url); 
 
-        const response = await fetch(url);
-        return await response.json();
+        await sleep(1000);
 
-        // return fetch(url)
-        //     .then(response => response.json())
-        //     .then(json => {
-        //         console.log(JSON.stringify(json));
-        //         return json;
-        //     })
-        //     .catch(error => {
-        //         console.log("The error inside getAccountSummaryData: " + error);
-        //         throw error;
-        //     });
+        return _.filter(await response.json(), item => ((!_.trim(obj.assetType) || item.assetType === obj.assetType) && 
+                                                        (!_.trim(obj.investorAccount) || item.name === obj.investorAccount)));
     }
 }
 
 export default AccountSummaryApi;
 
-
+/*
+function sleep(ms = 0) {
+    return new Promise(r => setTimeout(r, ms));
+}
+console.log('a');
+await sleep(6000);
+console.log('b');
+*/

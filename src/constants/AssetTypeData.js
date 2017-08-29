@@ -1,9 +1,5 @@
 export const AssetTypeData = [
     {
-        text: '--- All type ---',
-        value: '',
-    },
-    {
         text: 'Managed Fund',
         value: 'managed_fund',
     },

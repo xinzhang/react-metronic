@@ -2,31 +2,37 @@
     {
         "number": "000001",
         "name": "account_1",
-        "balance": "123"
+        "balance": "123",
+        "assetType": "managed_fund"
     },
     {
         "number": "000002",
         "name": "account_2",
-        "balance": "100"
+        "balance": "100",
+        "assetType": "term_deposit"
     },
     {
         "number": "000003",
+        "name": "account_2",
+        "balance": "200",
+        "assetType": "managed_fund"
+    },
+    {
+        "number": "000004",
+        "name": "account_2",
+        "balance": "200",
+        "assetType": "term_deposit"
+    },
+    {
+        "number": "000005",
         "name": "account_3",
-        "balance": "200"
+        "balance": "200",
+        "assetType": "managed_fund"
     },
     {
-        "number": "000003",
-        "name": "account_4",
-        "balance": "200"
-    },
-    {
-        "number": "000003",
-        "name": "account_5",
-        "balance": "200"
-    },
-    {
-        "number": "000003",
-        "name": "account_1",
-        "balance": "999"
+        "number": "000006",
+        "name": "account_3",
+        "balance": "999",
+        "assetType": "term_deposit"
     }
 ]

@@ -6,6 +6,7 @@ import SubmitButton from  '../../../components/ui/SubmitButton';
 import ResultConclusion from  '../../../components/ui/ResultConclusion';
 import CInput from  '../../../components/ui/CInput';
 import CTable from  '../../../components/ui/CTable';
+import CSpinner from  '../../../components/ui/CSpinner';
 import ResultTitle from  '../../../components/ResultTitle';
 
 import { printAccountSummary } from '../../../actions/accountSummaryAction';
@@ -14,7 +15,8 @@ import { AccountSummaryResultHeader } from './AccountSummaryResultHeader';
 const mapStateToProps = (state) => {
     return {
         AccountSummaryResultHeader: AccountSummaryResultHeader,
-        searchResult: state.accountSummaryState.searchResult
+        searchResult: state.accountSummaryState.searchResult,
+        isPending: state.accountSummaryState.isPending,
     }
 };
 
@@ -69,16 +71,16 @@ class AccountSummaryResult extends Component {
     };
 
     render() {
-        const { AccountSummaryResultHeader, onPrintClick } = this.props;
+        const { AccountSummaryResultHeader, isPending, onPrintClick } = this.props;
 
         return (
             <div className="c-search-result-container portlet light bordered">
                 <div className="c-search-result-titlebar">
-                <div className="c-search-result-title"><ResultTitle mainTitle="Account Summary" subTitle="Select an Account Number to view the individual Accounts" /></div>
-                <div className="c-search-result-buttons">
-                    <div className="c-search-result-toolbar"><CInput className="form-control" type="text" size="30" placeholder="Filter" value={ this.state.filterStr } onChange={ this.onFilterChange } /> </div>
-                    <SubmitButton onClick={ onPrintClick }><i className='fa fa-print' title="Print this report" /></SubmitButton>
-                </div>
+                    <div className="c-search-result-title"><ResultTitle mainTitle="Account Summary" subTitle="Select an Account Number to view the individual Accounts" /></div>
+                    <div className="c-search-result-buttons">
+                        <div className="c-search-result-toolbar"><CInput className="form-control" type="text" size="30" placeholder="Filter" value={ this.state.filterStr } onChange={ this.onFilterChange } /> </div>
+                        <SubmitButton onClick={ onPrintClick }><i className='fa fa-print' title="Print this report" /></SubmitButton>
+                    </div>
                 </div>
                 <div className="c-search-result-body portlet-body">
                     <CTable headers={ AccountSummaryResultHeader } data={ this.state.currentlyDisplayed } checkBox={ false }  />
@@ -86,6 +88,7 @@ class AccountSummaryResult extends Component {
                         <ResultConclusion >Total Balance ($): { this.state.totalBalance }</ResultConclusion>
                     </div>
                 </div>
+                <CSpinner isPending={ isPending } />
             </div>
         );
     };

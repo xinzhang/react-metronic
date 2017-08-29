@@ -1,13 +1,32 @@
-import { createStore, applyMiddleware } from 'redux';
-//import { createStore, applyMiddleware, compose } from 'redux';
-//import { formJS } from 'immutable';
-//import persistState from 'redux-localstorage';
+import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
-import promiseMiddleware from '../middleware/promiseMiddleware';
-//import { browserHistory } from 'react-redux';
-//import { routerMiddle } from 'react-router-redux';
-//import logger from './logger';
+import promiseMiddleware from 'redux-promise-middleware';
 import rootReducer from '../reducers';
+//import persistState from 'redux-localstorage';
+
+// Log only in development
+const middlewares = [];
+middlewares.push(thunk, promiseMiddleware());
+
+if (process.env.NODE_ENV === `development`) {
+    const { logger } = require(`redux-logger`);
+
+    middlewares.push(logger);
+}
+
+const store = compose(applyMiddleware(...middlewares))(createStore)(rootReducer);
+
+export default store;
+
+// normal way to add logger
+// const store = createStore(
+//     rootReducer,
+//     applyMiddleware(
+//         thunk,
+//         promiseMiddleware(), // be careful here, we need to use promiseMiddleware(), not promiseMiddleware
+//         logger
+//     )
+// );
 
 /*
 const storageConfig = {
@@ -41,13 +60,3 @@ const configureStore = (initialState) => {
     return store;
 };
 */
-
-const store = createStore(
-    rootReducer,
-    applyMiddleware(
-        thunk,
-        promiseMiddleware()
-    )
-);
-
-export default store;

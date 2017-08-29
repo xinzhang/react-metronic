@@ -20,9 +20,9 @@ const mapDispatchToProps = (dispatch) => {
 
 const INITIAL_STATE = {
     search: {
-        assetType: 'term_deposit',
-        investorAccount: 'account_2',
-        investmentDate: '21/08/2017',
+        assetType: 'managed_fund',
+        investorAccount: '',
+        investmentDate: '',
     },
 };
 
