@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import _ from 'lodash';
+import _, {debounce} from 'lodash';
 
 import SubmitButton from  '../../../components/ui/SubmitButton';
 import ResultConclusion from  '../../../components/ui/ResultConclusion';
@@ -23,12 +23,12 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         onPrintClick: () => {
-            dispatch(printAccountSummary())  
-        }, 
+            dispatch(printAccountSummary())
+        },
     }
 };
 
-class AccountSummaryResult extends Component {  
+class AccountSummaryResult extends Component {
     constructor(props, context) {
         super(props, context);
 
@@ -40,8 +40,6 @@ class AccountSummaryResult extends Component {
             currentlyDisplayed: this.props.searchResult,
         };
 
-        // bindings
-        this.onFilterChange = this.onFilterChange.bind(this);
     }
 
     componentWillReceiveProps(nextProps) {
@@ -51,24 +49,29 @@ class AccountSummaryResult extends Component {
             totalBalance,
             currentlyDisplayed: nextProps.searchResult,
         });
-    }    
+    }
 
-    onFilterChange = (e) => {
-        let filterStr = e.target.value;
+    handleSearch = (event)=> {
+      this.setState({filterStr: event.target.value}, () => {
+        this.doSearch();
+      })
+    }
 
-        let newlyDisplayed = _.filter(this.props.searchResult, 
-                                            summary => summary.name.includes(filterStr.toLowerCase()) || 
-                                                       summary.number.includes(filterStr.toLowerCase()) ||
-                                                       summary.balance.includes(filterStr.toLowerCase()));
-        
-        let totalBalance = _.sumBy(newlyDisplayed, (o) => Number(o.balance));
+    doSearch = debounce( () => {
+      let filterStr = this.state.filterStr;
 
-        this.setState({
-            filterStr,
-            totalBalance,
-            currentlyDisplayed: newlyDisplayed,
-        });                                                   
-    };
+      let newlyDisplayed = _.filter(this.props.searchResult,
+                                          summary => summary.name.includes(filterStr.toLowerCase()) ||
+                                                     summary.number.includes(filterStr.toLowerCase()) ||
+                                                     summary.balance.includes(filterStr.toLowerCase()));
+
+      let totalBalance = _.sumBy(newlyDisplayed, (o) => Number(o.balance));
+
+      this.setState({
+          totalBalance,
+          currentlyDisplayed: newlyDisplayed,
+      });
+    }, 300);
 
     render() {
         const { AccountSummaryResultHeader, isPending, onPrintClick } = this.props;
@@ -78,7 +81,7 @@ class AccountSummaryResult extends Component {
                 <div className="c-search-result-titlebar">
                     <div className="c-search-result-title"><ResultTitle mainTitle="Account Summary" subTitle="Select an Account Number to view the individual Accounts" /></div>
                     <div className="c-search-result-buttons">
-                        <div className="c-search-result-toolbar"><CInput className="form-control" type="text" size="30" placeholder="Filter" value={ this.state.filterStr } onChange={ this.onFilterChange } /> </div>
+                        <div className="c-search-result-toolbar"><CInput className="form-control" type="text" size="30" placeholder="Filter" value={ this.state.filterStr } onChange={ this.handleSearch } /> </div>
                         <SubmitButton onClick={ onPrintClick }><i className='fa fa-print' title="Print this report" /></SubmitButton>
                     </div>
                 </div>
@@ -93,7 +96,7 @@ class AccountSummaryResult extends Component {
         );
     };
 };
- 
+
 export default connect(
     mapStateToProps,
     mapDispatchToProps
