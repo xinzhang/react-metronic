@@ -42,7 +42,7 @@ class LoginPage extends Component {
         }
       }
   }
-
+  
   render() {
 
     return (
@@ -58,7 +58,9 @@ class LoginPage extends Component {
                   { /* ie8, ie9 does not support html5 placeholder, so we just show field title for that */ }
                   <div className="input-icon">
                       <i className="fa fa-user"></i>
-                      <input className="form-control placeholder-no-fix" type="text" autoComplete="off" placeholder="Username" name="userid"
+                      <input className="form-control placeholder-no-fix" type="text" autoComplete="off"
+                        placeholder="Username" name="userName"
+                        required
                         onChange={this.updateLoginData} /> </div>
               </div>
               <div className="form-group">

@@ -1,7 +1,9 @@
 import { combineReducers } from 'redux';
 import { routerReducer } from 'react-router-redux';
 import { reducer as formReducer } from 'redux-form';
-//import loggedUserReducer from './loggedUserReducer';
+// import counter from './counter';
+// import session from './session';
+import loggedUserReducer from './loggedUserReducer';
 import accountSummaryReducer from './accountSummaryReducer';
 import userReducer from './userReducer';
 

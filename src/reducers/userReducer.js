@@ -25,6 +25,9 @@ export default function userReducer (state = initialState, action ){
     case actions.LOGIN_USER_REJECTED:
       return { ...state, isPending: false, didInvalidate: true, error: action.error };
 
+    case actions.LOGOUT_USER:
+      return { ...initialState, isPending:false};
+
     default:
       return state;
   }

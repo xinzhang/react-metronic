@@ -34,10 +34,22 @@
   "scripts": {
     "build-css": "node-sass-chokidar src/ -o src/",
     "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
-    "start-js": "react-scripts start",
+    "start-js": "set NODE_ENV=test && react-scripts start",
     "start": "npm-run-all -p watch-css start-js",
+    "start-js-dev": "set NODE_ENV=development && react-scripts start",
+    "start-dev": "npm-run-all -p watch-css start-js-dev",
     "build": "npm run build-css && react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
-  }  
+  },
+  "proxy":{
+      "/token" : {
+        "target": "http://192.168.10.54:9092/ClientPortal.Security.API/",
+        "ws":true
+      },
+      "/api" : {
+        "target": "http://localhost:27969/",
+        "ws":true
+      }
+  }
 }

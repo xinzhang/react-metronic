@@ -1,10 +1,11 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { logout } from '../utils/xhr';
+import { logout } from '../actions/loginActions';
 import './TopHeader.css';
 import logo from '../assets/images/logo.png';
+import {connect} from 'react-redux';
 
-const TopHeader = ({ history }) => {
+const TopHeader = ({userName, dispatch}) => {
     return (
         <div className="page-header">
             { /* BEGIN HEADER */ }
@@ -24,8 +25,8 @@ const TopHeader = ({ history }) => {
                         { /* End Toggle Button */ }
                         { /* BEGIN LOGO */ }
                         <div className="page-logo" >
-                            <NavLink to="/app/home" exact> 
-                                <img src={ logo } className="c-logo-img" alt="NAB Asset Servicing" title="NAB Asset Servicing" /> 
+                            <NavLink to="/app/home" exact>
+                                <img src={ logo } className="c-logo-img" alt="NAB Asset Servicing" title="NAB Asset Servicing" />
                             </NavLink>
                         </div>
                         { /* END LOGO */ }
@@ -41,33 +42,31 @@ const TopHeader = ({ history }) => {
                         <div className="topbar-actions">
                             <div className="c-btn-group-blue btn-group margin-right-3">
                                 <div className="btn btn-sm md-skip dropdown-toggle">
-                                    <NavLink to="/app/home" exact> 
+                                    <NavLink to="/app/home" exact>
                                         <i className="fa fa-home" title="Home"></i>
                                     </NavLink>
                                 </div>
                             </div>
                             <div className="c-btn-group-purple btn-group margin-right-3">
                                 <div className="btn btn-sm md-skip dropdown-toggle">
-                                    <NavLink to="/app/support"> 
+                                    <NavLink to="/app/support">
                                         <i className="fa fa-support" title="Support"></i>
                                     </NavLink>
                                 </div>
                             </div>
                             <div className="c-btn-group-green btn-group margin-right-3">
                                 <div className="btn btn-sm md-skip dropdown-toggle">
-                                    <NavLink to="/app/site-map"> 
+                                    <NavLink to="/app/site-map">
                                         <i className="fa fa-sitemap" title="Site Map"></i>
                                     </NavLink>
-                                </div> 
+                                </div>
                             </div>
-                            <div className="c-btn-group-red btn-group margin-right-3"> 
+                            <div className="c-btn-group-red btn-group margin-right-3">
                                 <div className="btn btn-sm md-skip dropdown-toggle">
                                     <div onClick={() => {
-                                            logout().then(() => {
-                                                //history.push('/') 
-                                                // need to check later
-                                            })
-                                            }}>
+                                      console.log('toptheader', dispatch)
+                                      dispatch(logout());
+                                    }}>
                                         <i className="fa fa-sign-out" title="Logout"></i>
                                     </div>
                                 </div>
@@ -75,7 +74,7 @@ const TopHeader = ({ history }) => {
                             { /* BEGIN USER PROFILE */ }
                             <div className="btn-group-img btn-group">
                                 <button type="button" className="btn btn-sm md-skip dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                                    <span>Hi, Marcus</span>
+                                    <span>Hi, {userName}</span>
                                 </button>
                                 <ul className="dropdown-menu-v2" role="menu">
                                     <li>
@@ -97,7 +96,7 @@ const TopHeader = ({ history }) => {
                                 <i className="icon-logout"></i>
                             </button>
                             { /* END QUICK SIDEBAR TOGGLER */ }
-                        </div>            
+                        </div>
                         { /* END TOPBAR ACTIONS */ }
                     </div>
                 </div>
@@ -107,27 +106,6 @@ const TopHeader = ({ history }) => {
     );
 };
 
-export default TopHeader;
+const mapStateToProps = (state) => ({userName: state.user.userName});
 
-/*
-  <header className="primary-header clearfix navbar-fixed-top">
-    <div className="menu-logo"><img src={ logo } className="logo" alt="NAB Asset Servicing logo" /></div>
-    <div className="menu-bar">
-        <div>
-            <nav>
-                <NavLink to="/app" exact activeClassName="active" className="menu-item">Home</NavLink>
-                <NavLink to="/app/support" activeClassName="active" className="menu-item">Support</NavLink>
-                <NavLink to="/app/site-map" activeClassName="active" className="menu-item">Site Map</NavLink>
-            </nav>
-        </div>
-      
-        <div onClick={() => {
-            logout().then(() => {
-                //history.push('/') 
-                // need to check later
-            })
-            }}>Logout
-        </div>
-    </div>
-  </header>
-*/
+export default connect(mapStateToProps)( TopHeader );

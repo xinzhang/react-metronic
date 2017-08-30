@@ -12,7 +12,7 @@ describe('getAccountSummaryData API testing', () => {
                 expect(response[0].balance).toBe("123");
             })
     });
-    
+
     it('expect data - data filter by assertType', () => {
         let search = {
             assetType: 'term_deposit',
@@ -25,7 +25,7 @@ describe('getAccountSummaryData API testing', () => {
                 expect(response[2].balance).toBe("999");
             })
     });
-    
+
     it('expect data - data filter by investorAccount', () => {
         let search = {
             investorAccount: 'account_2',
@@ -37,7 +37,7 @@ describe('getAccountSummaryData API testing', () => {
                 expect(response[1].balance).toBe("200");
             })
     });
-    
+
     it('expect data - data filter by assertType and investorAccount', () => {
         let search = {
             assetType: 'managed_fund',

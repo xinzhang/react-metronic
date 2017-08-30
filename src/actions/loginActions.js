@@ -10,13 +10,12 @@ export const LOGIN_USER_FULFILLED = 'LOGIN_USER_FULFILLED'
 export const LOGIN_USER_REJECTED = 'LOGIN_USER_REJECTED'
 
 export const login = (user) => {
-    console.log(process.env.NODE_ENV);
     if (process.env.NODE_ENV === 'development')
     {
       return {
         type: LOGIN_USER_FULFILLED,
         payload: {
-          userName:'test',
+          userName:user.userName,
           error:''
         }
       }
@@ -27,3 +26,13 @@ export const login = (user) => {
       }
     }
 };
+
+export const logout = () => {
+  return {
+    type: LOGOUT_USER,
+    payload: {
+      userName:'',
+      error:''
+    }
+  }
+}
