@@ -8,7 +8,9 @@
   "dependencies": {
     "classnames": "^2.2.5",
     "crypto-js": "^3.1.9-1",
+    "express": "^4.15.4",
     "history": "^4.6.3",
+    "http-proxy-middleware": "^0.17.4",
     "immutable": "^3.8.1",
     "isomorphic-fetch": "^2.2.1",
     "jquery": "^3.2.1",
@@ -42,14 +44,14 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
-  "proxy":{
-      "/token" : {
-        "target": "http://192.168.10.54:9092/ClientPortal.Security.API/",
-        "ws":true
-      },
-      "/api" : {
-        "target": "http://localhost:27969/",
-        "ws":true
-      }
+  "proxy": {
+    "/token": {
+      "target": "http://192.168.10.54:9092/ClientPortal.Security.API/",
+      "ws": true
+    },
+    "/api": {
+      "target": "http://localhost:27969/",
+      "ws": true
+    }
   }
 }
