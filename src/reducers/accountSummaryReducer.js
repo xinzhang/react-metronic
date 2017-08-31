@@ -1,17 +1,16 @@
 import * as types from '../actions/actionTypes';
+import AccountSummaryApi from '../api/home/accountSummaryApi';
             
 const INITIAL_STATE = {
     searchResult: [],
 };
 
-// AccountSummaryApi.getAccountSummaryData({})
-//     .then(result => {
-//         INITIAL_STATE.searchResult = result;
-//     });
+AccountSummaryApi.getAccountSummaryData({assetType: 'managed_fund'})
+    .then(result => {
+        INITIAL_STATE.searchResult = result;
+    });
 
 const accountSummaryReducer = (state = INITIAL_STATE, action = {}) => {
-    console.log("INITIAL_STATE: " + JSON.stringify(state));
-
     switch (action.type) {        
         case types.SEARCH_ACCOUNT_SUMMARY_PENDING:
             return { ...state, isPending: true };
@@ -23,7 +22,7 @@ const accountSummaryReducer = (state = INITIAL_STATE, action = {}) => {
         case types.PRINT_ACCOUNT_SUMMARY:
             return { ...state };
 
-        default: console.log("default: " + JSON.stringify(state));
+        default: 
             return state;
     }
 };

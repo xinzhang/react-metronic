@@ -14,8 +14,31 @@ class AccountSummaryApi {
 
         await sleep(1000);
 
+        //mock up search on server side
         return _.filter(await response.json(), item => ((!_.trim(obj.assetType) || item.assetType === obj.assetType) && 
                                                         (!_.trim(obj.investorAccount) || item.name === obj.investorAccount)));
+    }
+         
+    static getPortfolioFundData = async (obj, preUrl="") => {
+        let url = preUrl + "/json/home/accountSummary/PortfolioFundData.json";
+
+        const response = await fetch(url); 
+
+        await sleep(1000);
+
+        //mock up search on server side
+        return _.filter(await response.json(), item => (!obj || !_.trim(obj.accountNo) || item.accountNo === obj.accountNo) );
+    }
+         
+    static getPortfolioDepositData = async (obj, preUrl="") => {
+        let url = preUrl + "/json/home/accountSummary/PortfolioDepositData.json";
+
+        const response = await fetch(url); 
+
+        await sleep(1000);
+
+        //mock up search on server side
+        return _.filter(await response.json(), item => (!obj || !_.trim(obj.accountNo) || item.accountNo === obj.accountNo) );
     }
 }
 

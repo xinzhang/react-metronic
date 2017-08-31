@@ -1,0 +1,58 @@
+[
+    {
+        "ID": "000001",
+        "name": "Fund 1",
+        "unit": "2",
+        "sellPrice": "100",
+        "dollarValue": "200",
+        "accountNo": "000001"
+    },
+    {
+        "ID": "000002",
+        "name": "Fund 2",
+        "unit": "2",
+        "sellPrice": "200",
+        "dollarValue": "400",
+        "accountNo": "000001"
+    },
+    {
+        "ID": "000003",
+        "name": "Fund 3",
+        "unit": "1",
+        "sellPrice": "100",
+        "dollarValue": "100",
+        "accountNo": "000002"
+    },
+    {
+        "ID": "000004",
+        "name": "Fund 4",
+        "unit": "5",
+        "sellPrice": "200",
+        "dollarValue": "1000",
+        "accountNo": "000002"
+    },
+    {
+        "ID": "000005",
+        "name": "Fund 5",
+        "unit": "1",
+        "sellPrice": "20",
+        "dollarValue": "20",
+        "accountNo": "000003"
+    },
+    {
+        "ID": "000006",
+        "name": "Fund 6",
+        "unit": "2",
+        "sellPrice": "100",
+        "dollarValue": "200",
+        "accountNo": "000003"
+    },
+    {
+        "ID": "000007",
+        "name": "Fund 7",
+        "unit": "2",
+        "sellPrice": "100",
+        "dollarValue": "200",
+        "accountNo": "000004"
+    }
+]

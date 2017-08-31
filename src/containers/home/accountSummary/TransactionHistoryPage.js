@@ -1,9 +1,10 @@
 import React from 'react';
-import ResultTitle from  '../../../components/ResultTitle';
 import SubmitButton from  '../../../components/ui/SubmitButton';
 import CPagination from  '../../../components/ui/CPagination';
 import SelectComponent from  '../../../components/ui/SelectComponent';
 import CTable from  '../../../components/ui/CTable';
+import LastUpdatedTag from  '../../../components/LastUpdatedTag';
+import ResultTitle from  '../../../components/ResultTitle';
 
 import TransactionInfo from './TransactionInfo';
 import TransactionToolBar from './TransactionToolBar';
@@ -14,6 +15,7 @@ import { TransactionFundResultHeader, TransactionFundResultData,
 import './TransactionHistoryPage.css'
 
 const TransactionHistoryPage = () => {
+  let lastUpdatedDate = 'Mon 21 Aus 2017';
   const FundData = [
     {
         text: 'Fund 1',
@@ -48,6 +50,7 @@ const TransactionHistoryPage = () => {
     <div className="c-transaction-history-container">
         <div className="portlet light bordered c-transaction-title">
           <div className="col-md-6"><TransactionInfo /></div>
+          <div className="col-md-6 c-center"><LastUpdatedTag lastUpdatedDate={ lastUpdatedDate } /></div>
         </div>
         <div className="portlet light bordered">
           <div className="c-right">

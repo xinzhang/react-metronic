@@ -1,19 +1,18 @@
 import { combineReducers } from 'redux';
 import { routerReducer } from 'react-router-redux';
 import { reducer as formReducer } from 'redux-form';
-// import counter from './counter';
-// import session from './session';
-import loggedUserReducer from './loggedUserReducer';
-import accountSummaryReducer from './accountSummaryReducer';
+import AccountSummaryReducer from './accountSummaryReducer';
+import PortfolioSummaryReducer from './portfolioSummaryReducer';
 import userReducer from './userReducer';
+import AccountReducer from './accountReducer';
 
 const rootReducer = combineReducers({
     rounting: routerReducer,
     form: formReducer,
-    // session,
-    // counter,
     user: userReducer,
-    accountSummaryState: accountSummaryReducer,
+    accountSummaryState: AccountSummaryReducer,
+    portfolioSummaryState: PortfolioSummaryReducer,
+    accountState: AccountReducer,
 });
 
 export default rootReducer;

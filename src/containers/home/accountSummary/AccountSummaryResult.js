@@ -39,7 +39,6 @@ class AccountSummaryResult extends Component {
             totalBalance,
             currentlyDisplayed: this.props.searchResult,
         };
-
     }
 
     componentWillReceiveProps(nextProps) {
