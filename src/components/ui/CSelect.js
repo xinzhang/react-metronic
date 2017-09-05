@@ -46,11 +46,9 @@ const CSelect = ({ dataArr, name, value, size=200, ...props }) => {
         //         { optionContent }
         //     </select>
         // </div>
-        <div>
             <select className="bs-select form-control" style={{ width: size }} name={ name } value={ value } onChange={ props.onChange } >
                 { optionContent }
             </select>
-        </div>
     );
 };
 

@@ -50,9 +50,10 @@ class CTable extends Component {
                             let columnValue = item[headerObj.name]; 
                             let columnHTML = columnValue;
                             
-                            if (headerObj.linkFlag) 
-                                columnHTML = ( <NavLink to={ headerObj.link + columnValue } title={ headerObj.tips }>{ columnValue }</NavLink> );
-                                              
+                            if (headerObj.linkFlag) {
+                                columnHTML = ( <NavLink to={ headerObj.link + item['paramValue'] } title={ headerObj.tips }>{ columnValue }</NavLink> );
+                            }
+
                             return (
                                 <td key={ objIndex } className="c-center">{ columnHTML }</td>
                             );

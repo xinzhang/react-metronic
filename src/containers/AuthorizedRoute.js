@@ -7,9 +7,10 @@ class AuthorizedRoute extends React.Component {
     }
 
     render() {
-      console.log(this.props);
+      // console.log('AuthorizedRoute: ', JSON.stringify(this.props));
       const { component: Component, user, ...rest } = this.props;
 
+      // console.log('component in AuthorizedRoute: ', this.props.Component);
       return (
           <Route {...rest} render={props => {
             //if (user.) return <div>Loading...</div>          

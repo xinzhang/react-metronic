@@ -9,7 +9,7 @@ const SelectComponent = ({ title, width=150, ...props }) => {
   return (
     <div className="form-group c-select-component-container " >
       <label className="control-label c-select-title c-right" style={{ width: width }}>{ title }: </label>
-      <div className="c-select-body"><CSelect { ...props } /></div>
+      <CSelect { ...props } />
     </div>
   );
 };

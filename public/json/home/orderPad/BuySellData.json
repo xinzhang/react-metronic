@@ -1,0 +1,14 @@
+[
+    {
+        "value": "BD",
+        "text": "Buy Dallor"
+    },
+    {
+        "value": "SD",
+        "text": "Sell Dallor"
+    },
+    {
+        "value": "SU",
+        "text": "Sell Unit"
+    }
+]

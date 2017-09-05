@@ -37,7 +37,7 @@ class LoginPage extends Component {
   componentWillReceiveProps(nextProps) {
       console.log('login componentWillReceiveProps:', nextProps);
       if (nextProps.user && nextProps.user.userName && nextProps.user.userName !== '') {
-        if (this.props.user && this.props.user.userName != nextProps.user.userName) {
+        if (this.props.user && this.props.user.userName !== nextProps.user.userName) {
           this.props.history.push('/app');
         }
       }

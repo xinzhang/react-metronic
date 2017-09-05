@@ -1,55 +1,62 @@
 [
     {
-        "ID": "000001",
+        "id": "000001",
         "name": "Fund 1",
+        "apirCode": "F001",
         "unit": "2",
         "sellPrice": "100",
         "dollarValue": "200",
         "accountNo": "000001"
     },
     {
-        "ID": "000002",
+        "id": "000002",
         "name": "Fund 2",
+        "apirCode": "F002",
         "unit": "2",
         "sellPrice": "200",
         "dollarValue": "400",
         "accountNo": "000001"
     },
     {
-        "ID": "000003",
+        "id": "000003",
         "name": "Fund 3",
+        "apirCode": "F003",
         "unit": "1",
         "sellPrice": "100",
         "dollarValue": "100",
         "accountNo": "000002"
     },
     {
-        "ID": "000004",
+        "id": "000004",
         "name": "Fund 4",
+        "apirCode": "F004",
         "unit": "5",
         "sellPrice": "200",
         "dollarValue": "1000",
         "accountNo": "000002"
     },
     {
-        "ID": "000005",
+        "id": "000005",
         "name": "Fund 5",
+        "apirCode": "F005",
         "unit": "1",
         "sellPrice": "20",
         "dollarValue": "20",
         "accountNo": "000003"
     },
     {
-        "ID": "000006",
+        "id": "000006",
         "name": "Fund 6",
+        "apirCode": "F006",
         "unit": "2",
         "sellPrice": "100",
         "dollarValue": "200",
         "accountNo": "000003"
     },
     {
-        "ID": "000007",
+        "id": "000007",
         "name": "Fund 7",
+        "apirCode": "F007",
         "unit": "2",
         "sellPrice": "100",
         "dollarValue": "200",

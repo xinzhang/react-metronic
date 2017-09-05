@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import _ from 'lodash';
+import PropTypes from 'prop-types';
+
 import ResultTitle from  '../../../components/ResultTitle';
 import SubmitButton from  '../../../components/ui/SubmitButton';
 import ResultConclusion from  '../../../components/ui/ResultConclusion';
@@ -13,17 +15,18 @@ import PortfolioInfo from './PortfolioInfo';
 import { searchPortfolioFundSummary, searchPortfolioDepositSummary, printPortfolioSummary,
           getAccountList } from '../../../actions/accountSummaryAction';
 import { PortfolioFundResultHeader, PortfolioDepositResultHeader } from './PortfolioSummaryResultHeader';
+import { FUNDFLAG, DEPOSITFLAG } from '../../../constants/appConfig';
 
 import './PortfolioSummaryPage.css';
 
 const mapStateToProps = (state) => {
   return {
-      PortfolioFundResultHeader: PortfolioFundResultHeader,
-      PortfolioDepositResultHeader: PortfolioDepositResultHeader,
-      portfolioFundResult: state.portfolioSummaryState.portfolioFundResult,
-      portfolioDepositResult: state.portfolioSummaryState.portfolioDepositResult,
-      accountList: state.accountState.accountList,
-      isPending: state.portfolioSummaryState.isPending,
+    PortfolioFundResultHeader,
+    PortfolioDepositResultHeader,
+    portfolioFundResult: state.portfolioSummaryState.portfolioFundResult,
+    portfolioDepositResult: state.portfolioSummaryState.portfolioDepositResult,
+    accountList: state.accountState.accountList,
+    isPending: state.portfolioSummaryState.isPending || state.accountState.isPending,
   }
 };
 
@@ -37,7 +40,7 @@ const mapDispatchToProps = (dispatch) => {
         dispatch(getAccountList());
       },
       onPrintClick: () => {
-          dispatch(printPortfolioSummary())  
+          dispatch(printPortfolioSummary());  
       },
   }
 };
@@ -49,36 +52,37 @@ class PortfolioSummaryPage extends Component {
     let selectedAccountNo = this.props.match.params.accountNo;
     // set state
     this.state = {
-        selectedAccountNo: selectedAccountNo || "",
-        totalCombiledBalance: 0,
-        totalFundBalance: 0,
-        totalDepositBalance: 0,
-        currentlyFundDisplayed: [],
-        currentlyDepositDisplayed: [],
-        accountList: [],
+      selectedAccountNo: selectedAccountNo || "",
+      totalCombiledBalance: 0,
+      totalFundBalance: 0,
+      totalDepositBalance: 0,
+      currentlyFundDisplayed: [],
+      currentlyDepositDisplayed: [],
     };
 
     this.props.searchPortfolioSummary(this.state.selectedAccountNo);
     this.props.getAccountList();
       
     // bindings
-    this.updatedStateOnPage = this.updatedStateOnPage.bind(this);
     this.onAccountChange = this.onAccountChange.bind(this);
+    this.updatedStateOnPage = this.updatedStateOnPage.bind(this);
   }
 
-  componentWillReceiveProps(nextProps) {
-    let accountList = [];
-    _.forEach(nextProps.accountList, item => accountList.push({ value: item.number, text: item.name }));
-    this.setState({ accountList });
-        
-    let selectedAccountNo = this.state.selectedAccountNo || (accountList[0] && accountList[0].value);
-    // console.log("test");  // efficiency issue, need to be fixed later
+  componentWillReceiveProps(nextProps) {             
+    // fix the efficiency issue by the code "if (nextProps.isPending === false) { }"
+    // must check whether isPending is false, 
+    // can't use "!this.props.isPending" for this.props.isPending is undefined when the page is loaded at the very begininng
+    if (nextProps.isPending === false) {
+        let selectedAccountNo = this.state.selectedAccountNo || (nextProps.accountList[0] && nextProps.accountList[0].value);
 
-    this.updatedStateOnPage({
-      selectedAccountNo,
-      portfolioFundResult: nextProps.portfolioFundResult,
-      portfolioDepositResult: nextProps.portfolioDepositResult,
-    });
+        this.updatedStateOnPage({
+            selectedAccountNo,
+            accountList: nextProps.accountList,
+            portfolioFundResult: nextProps.portfolioFundResult,
+            portfolioDepositResult: nextProps.portfolioDepositResult,
+        });
+    }
+
   }
 
   onAccountChange(event) {
@@ -86,18 +90,21 @@ class PortfolioSummaryPage extends Component {
 
     this.updatedStateOnPage({
       selectedAccountNo,
-      portfolioFundResult: this.props.portfolioFundResult,
-      portfolioDepositResult: this.props.portfolioDepositResult,
+        accountList: this.props.accountList,
+        portfolioFundResult: this.props.portfolioFundResult,
+        portfolioDepositResult: this.props.portfolioDepositResult,
     });
   }
 
   updatedStateOnPage(obj) { 
-    let selectedAccount = _.findLast(this.state.accountList, item => item.value === obj.selectedAccountNo);
-    let selectedAccountName = selectedAccount ? selectedAccount.text : "";
+    let selectedAccount = _.findLast(obj.accountList, item => item.value === obj.selectedAccountNo);
+    let selectedAccountName = selectedAccount ? selectedAccount.text : (this.state.selectedAccountName || "");
+ 
+    let currentlyFundDisplayed = _.map(_.filter(obj.portfolioFundResult, item => item.accountNo === obj.selectedAccountNo),
+                                            element => _.extend({}, element, {paramValue: `${obj.selectedAccountNo}/${FUNDFLAG}/${element.id}`}));
 
-    let currentlyFundDisplayed = _.filter(obj.portfolioFundResult, item => item.accountNo === obj.selectedAccountNo);
-
-    let currentlyDepositDisplayed = _.filter(obj.portfolioDepositResult, item => item.accountNo === obj.selectedAccountNo);
+    let currentlyDepositDisplayed = _.map(_.filter(obj.portfolioDepositResult, item => item.accountNo === obj.selectedAccountNo),
+                                            element => _.extend({}, element, {paramValue: `${obj.selectedAccountNo}/${DEPOSITFLAG}/${element.id}`}));
     // balance
     let totalFundBalance = _.sumBy(currentlyFundDisplayed, (o) => Number(o.dollarValue));
     let totalDepositBalance = _.sumBy(currentlyDepositDisplayed, (o) => Number(o.maturityValue));
@@ -105,12 +112,12 @@ class PortfolioSummaryPage extends Component {
 
     this.setState({
       selectedAccountNo: obj.selectedAccountNo,
-      selectedAccountName: selectedAccountName,
-      currentlyFundDisplayed,
-      currentlyDepositDisplayed,
+      selectedAccountName,
       totalFundBalance,
       totalDepositBalance,
       totalCombiledBalance,
+      currentlyFundDisplayed,
+      currentlyDepositDisplayed,
     });
   }
   
@@ -121,7 +128,7 @@ class PortfolioSummaryPage extends Component {
       <div className="c-portfolio-container">
           <div className="portlet light bordered c-portfolio-title">
             <div className="col-md-6"><PortfolioInfo accountName={ this.state.selectedAccountName } totalValue={ this.state.totalCombiledBalance }  /></div>
-            <div className="col-md-6"><SelectComponent name="accountList" title="Select an Account" dataArr={ this.state.accountList } value={ this.state.selectedAccountNo } onChange={ this.onAccountChange } /></div>
+            <div className="col-md-6"><SelectComponent name="accountList" title="Select an Account" dataArr={ this.props.accountList } value={ this.state.selectedAccountNo } onChange={ this.onAccountChange } /></div>
           </div>
           <div className="c-search-result-container portlet light bordered">
             <div className="c-search-result-titlebar">
@@ -144,6 +151,20 @@ class PortfolioSummaryPage extends Component {
     );
   }
 }
+
+// PortfolioSummaryPage.defaultProps = {
+//   cityList: [],
+//   provinceList: [],
+// }
+
+PortfolioSummaryPage.propTypes = {
+    PortfolioFundResultHeader: PropTypes.array,
+    PortfolioDepositResultHeader: PropTypes.array,
+    portfolioFundResult: PropTypes.array,
+    portfolioDepositResult: PropTypes.array,
+    accountList: PropTypes.array,
+    isPending: PropTypes.bool,
+};
 
 export default connect(
     mapStateToProps,

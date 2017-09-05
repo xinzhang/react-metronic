@@ -1,4 +1,4 @@
-import {encode, encrypt} from '../utils/crypt';
+import { encrypt } from '../utils/crypt';
 import * as actions from '../actions/loginActions'
 
 const initialState = Object.assign({

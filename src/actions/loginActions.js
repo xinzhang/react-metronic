@@ -1,5 +1,5 @@
 
-import {encode, encrypt} from '../utils/crypt';
+// import {encode, encrypt} from '../utils/crypt';
 import {loginUser} from '../api/account/loginApi'
 
 export const LOGOUT_USER = 'LOGOUT_USER'
@@ -10,7 +10,8 @@ export const LOGIN_USER_FULFILLED = 'LOGIN_USER_FULFILLED'
 export const LOGIN_USER_REJECTED = 'LOGIN_USER_REJECTED'
 
 export const login = (user) => {
-    if (process.env.NODE_ENV === 'development')
+    console.log(process.env.NODE_ENV);
+    if (process.env.NODE_ENV === '')
     {
       return {
         type: LOGIN_USER_FULFILLED,

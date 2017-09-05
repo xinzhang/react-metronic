@@ -1,13 +1,8 @@
 import * as types from '../actions/actionTypes';
             
 const INITIAL_STATE = {
-    accountList: {},
+    accountList: [],
 };
-
-// AccountSummaryApi.getAccountSummaryData({})
-//     .then(result => {
-//         INITIAL_STATE.searchResult = result;
-//     });
 
 const AccountReducer = (state = INITIAL_STATE, action = {}) => {
     switch (action.type) {        

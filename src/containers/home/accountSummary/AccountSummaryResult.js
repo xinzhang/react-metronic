@@ -37,7 +37,7 @@ class AccountSummaryResult extends Component {
         this.state = {
             filterStr: '',
             totalBalance,
-            currentlyDisplayed: this.props.searchResult,
+            currentlyDisplayed: _.map(this.props.searchResult, element => _.extend({}, element, {paramValue: element.number})),
         };
     }
 
@@ -46,7 +46,7 @@ class AccountSummaryResult extends Component {
 
         this.setState({
             totalBalance,
-            currentlyDisplayed: nextProps.searchResult,
+            currentlyDisplayed: _.map(nextProps.searchResult, element => _.extend({}, element, {paramValue: element.number})),
         });
     }
 
@@ -59,16 +59,18 @@ class AccountSummaryResult extends Component {
     doSearch = debounce( () => {
       let filterStr = this.state.filterStr;
 
-      let newlyDisplayed = _.filter(this.props.searchResult,
+      let currentlyDisplayed = _.map(_.filter(this.props.searchResult,
                                           summary => summary.name.includes(filterStr.toLowerCase()) ||
                                                      summary.number.includes(filterStr.toLowerCase()) ||
-                                                     summary.balance.includes(filterStr.toLowerCase()));
+                                                     summary.balance.includes(filterStr.toLowerCase())), 
+                                                element => _.extend({}, element, {paramValue: element.number}));
 
-      let totalBalance = _.sumBy(newlyDisplayed, (o) => Number(o.balance));
+
+      let totalBalance = _.sumBy(currentlyDisplayed, (o) => Number(o.balance));
 
       this.setState({
           totalBalance,
-          currentlyDisplayed: newlyDisplayed,
+          currentlyDisplayed: currentlyDisplayed,
       });
     }, 300);
 
