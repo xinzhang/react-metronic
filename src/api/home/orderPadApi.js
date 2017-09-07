@@ -1,37 +1,13 @@
 import _ from 'lodash';
-import axios from 'axios';
+import fetch from 'isomorphic-fetch';
 import { sleep } from '../../utils/sleep';
+import { creditCardformat } from '../../utils/StringService';
 
-
-class OrderPadApi {      
-    static getAccountList = async (obj, preUrl="") => {
-        let url = preUrl + "/json/home/accountSummary/AccountSummaryData.json";
-
-        const response = await fetch(url); 
-
-        await sleep(1000);
-
-        //mock up search on server side                                                        
-        return _.map(_.filter(await response.json(), item => ((!_.trim(obj.userId) || item.userId === obj.userId) &&
-                                                            (!_.trim(obj.assetType) || item.assetType === obj.assetType))), 
-                        item => _.assign({value: item['number'], text: item['name']}));
-    }
-
-    static getFundList = async (obj, preUrl="") => {
-        let url = preUrl + "/json/home/accountSummary/PortfolioFundData.json";
-
-        const response = await fetch(url); 
-
-        //mock up search on server side
-        return _.map(_.filter(await response.json(), item => (!obj || !_.trim(obj.accountNo) || item.accountNo === obj.accountNo)), 
-                        item => _.assign({value: item['id'], text: item['name'], dollarValue: item['dollarValue'], apirCode: item['apirCode']}));
-    }
-
-    static getFundDetail = async (obj, preUrl="") => {        
-        console.log(process.env.NODE_ENV);
+class OrderPadApi {    
+    static getFundDetailsList = async (obj, preUrl="") => {    
         if (process.env.NODE_ENV === 'development')
         {        
-            let url = preUrl + "/json/home/orderPad/FundData.json";
+            let url = preUrl + "/json/home/orderPad/FundDetails.json";
 
             const response = await fetch(url); 
 
@@ -44,22 +20,24 @@ class OrderPadApi {
         }
     }
      
-    static getBuySellList = async (obj, preUrl="") => {        
-        console.log(process.env.NODE_ENV);
+    static getPaymentDetailsList = async (obj, preUrl="") => {       
         if (process.env.NODE_ENV === 'development')
         {        
-            let url = preUrl + "/json/home/orderPad/BuySellData.json";
+            let url = preUrl + "/json/home/orderPad/PaymentDetails.json";
 
             const response = await fetch(url); 
 
             await sleep(1000);
-
+            console.log("obj.accountNo:", obj.accountNo);
             //mock up search on server side
-            return await response.json();
+            return _.map(_.filter(await response.json(), item => ((!_.trim(obj.userId) || item.userId === obj.userId) &&
+                                                                (!_.trim(obj.accountNo) || item.accountNo === obj.accountNo))),
+                        item => _.assign({value: item['paymentId'], text: `${creditCardformat(item['cardNo'])} ( ${item['expiredDate']} )`}));
+
         } else {
             console.log('production');
         }
-    }    
+    }   
 }
 
 export default OrderPadApi;

@@ -1,54 +1,140 @@
-import React from 'react';
-import ResultTitle from  '../../../components/ResultTitle';
-import AssetType from  '../../../components/AssetType';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import _ from 'lodash';
+import { Values } from 'redux-form-website-template';
 import CTable from  '../../../components/ui/CTable';
-import ResetButton from  '../../../components/ui/ResetButton';
-import SubmitButton from  '../../../components/ui/SubmitButton';
-import SelectComponent from  '../../../components/ui/SelectComponent';
-import BuySellSelector from './BuySellSelector';
-import InputComponent from '../../../components/ui/InputComponent';
+import OrderPadForm from './OrderPadForm';
 
-import { OrderPadHeader, OrderPadData } from './OrderPadData';
+import { addOrder, getFundDetailsList, getPaymentDetailsList } from '../../../actions/orderPadAction';
+import { getAccountList, getFundList } from '../../../actions/accountSummaryAction';
+import { getAssetTypeList, getBuySellList } from '../../../actions/commonAction';
+import { OrderPadHeader } from './OrderPadHeader';
 
 import './OrderPadPage.css';
 
-const OrderPadPage = () => {
-  const FundData = [
-    {
-        text: 'Fund 1',
-        value: 'fund_1',
-    },
-    {
-        text: 'Fund 2',
-        value: 'fund_2',
-    },
-    {
-        text: 'Fund 3',
-        value: 'fund_3',
-    },
-  ];
 
-  return (
-    <div className="c-order-pad-container">
-      <div className="portlet light bordered">
-        <div className="c-order-pad-title"><ResultTitle mainTitle="Order Pad" /></div>
-        <div className="row">
-            <div className="col-md-12"><AssetType width="20%" size="80%"/></div>
-            <div className="col-md-12"><InputComponent title="Portfolio" value="000001" /></div>
-            <div className="col-md-12"><BuySellSelector width="20%" size="80%"/></div>
-            <div className="col-md-12"><SelectComponent title="Fund Name" dataArr={ FundData } width="20%" size="80%" /></div>
-            <div className="col-md-12"><InputComponent title="$ Amount" value="100" /></div>
-            <div className="col-md-12"><InputComponent title="Unit Amount" value="10" /></div>
-            <div className="col-md-12"><InputComponent title="Payment Details" value="paid" /></div>
-        </div>
-        <div className="c-button-row">
-          <div className="c-reset-button"><ResetButton><i className='fa fa-rotate-left' /> Reset</ResetButton></div>
-          <SubmitButton><i className='fa fa-send' /> Submit</SubmitButton>
-        </div>
-      </div>
-        <CTable headers={ OrderPadHeader } data={ OrderPadData}  checkBox={ false } />
-    </div>
-  );
+const mapStateToProps = (state) => {
+    return {
+        OrderPadHeader,
+        assetTypeList: state.commonState.assetTypeList,
+        accountList: state.accountState.accountList,
+        buySellList: state.commonState.buySellList,
+        fundList: state.fundState.fundList,
+        fundDetailsList: state.fundState.fundDetailsList,
+        paymentDetailsList: state.accountState.paymentDetailsList,
+        isPending: state.commonState.isPending || 
+                    state.accountState.isPending || 
+                    state.fundState.isPending,
+    }
 };
 
-export default OrderPadPage;
+const mapDispatchToProps = (dispatch) => {
+  return {
+        getAssetTypeList: (obj) => {
+            dispatch(getAssetTypeList(obj));
+        },
+        getAccountList: (obj) => {
+            dispatch(getAccountList(obj));
+        },
+        getBuySellList: (obj) => {
+            dispatch(getBuySellList(obj));
+        },
+        getFundList: (obj) => {
+            dispatch(getFundList(obj));
+        },
+        getFundDetailsList: (obj) => {
+            dispatch(getFundDetailsList(obj));
+        },
+        getPaymentDetailsList: (obj) => {
+            dispatch(getPaymentDetailsList(obj));
+        },
+        onSubmitClick: (obj) => {
+            dispatch(addOrder(obj));  
+        },
+  }
+};
+
+class OrderPadPage extends Component {
+
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            selectedFundId: "",
+            currentlyOrderPadDisplayed: [],
+        };
+            
+        // call the actions to load the data
+        this.props.getAssetTypeList({});
+        this.props.getAccountList({});
+        this.props.getBuySellList({});
+        this.props.getFundList({});
+        this.props.getFundDetailsList({});
+        this.props.getPaymentDetailsList({});
+
+        // this. = this..bind(this);
+    }
+
+    componentWillReceiveProps(nextProps) {             
+        if (nextProps.isPending === false) { 
+            let selectedFundId = this.state.selectedFundId || (nextProps.fundList && nextProps.fundList[0] && nextProps.fundList[0].value);
+
+            this.updatedOrderPadStateOnPage({
+                selectedFundId,
+                fundDetailsList: nextProps.fundDetailsList,
+            });
+            
+        }
+    }
+
+    onFundChange(event) {
+        let selectedFundId = event.target.value;
+        
+        this.updatedFundStateOnPage({
+            selectedFundId,
+            fundTransactionHistory: this.props.fundTransactionHistory,
+        });
+    }
+    
+    updatedOrderPadStateOnPage(obj) {
+        this.setState({
+            currentlyOrderPadDisplayed: _.filter(obj.fundDetailsList, item => item.fundId === obj.selectedFundId),
+        });
+    }
+
+    render() {
+        return (
+            <div className="c-order-pad-container">
+                <OrderPadForm { ...this.props } />
+                <CTable headers={ OrderPadHeader } data={ this.state.currentlyOrderPadDisplayed }  checkBox={ false } />
+                <Values form="OrderPadForm" />
+            </div>
+        );
+    }
+}
+
+OrderPadPage.propTypes = {
+    OrderPadHeader: PropTypes.array,
+    assetTypeList: PropTypes.array,
+    accountList: PropTypes.array,
+    buySellList: PropTypes.array,
+    fundList: PropTypes.array,
+    fundDetailsList: PropTypes.array,
+    paymentDetailsList: PropTypes.array,
+    isPending: PropTypes.bool,
+};
+
+OrderPadPage.defaultProps = {
+    assetTypeList: [],
+    accountList: [],
+    buySellList: [],
+    fundList: [],
+    fundDetailsList: [],
+    paymentDetailsList: [],
+}
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(OrderPadPage);

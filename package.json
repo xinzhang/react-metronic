@@ -48,7 +48,7 @@
   },
   "proxy": {
     "/token": {
-      "target": "http://192.168.10.54:9092/ClientPortal.Security.Api/",                
+      "target": "http://192.168.10.54:9092/ClientPortal.Security.Api/",
       "ws": true
     },
     "/api": {

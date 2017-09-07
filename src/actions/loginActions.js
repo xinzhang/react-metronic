@@ -10,9 +10,8 @@ export const LOGIN_USER_FULFILLED = 'LOGIN_USER_FULFILLED'
 export const LOGIN_USER_REJECTED = 'LOGIN_USER_REJECTED'
 
 export const login = (user) => {
-    console.log(process.env.NODE_ENV);
-    if (process.env.NODE_ENV === '')
-    {
+    if (process.env.REACT_APP_PROVIDER === 'json')
+    { 
       return {
         type: LOGIN_USER_FULFILLED,
         payload: {
@@ -20,7 +19,7 @@ export const login = (user) => {
           error:''
         }
       }
-    } else {
+    } else { //return promise
       return {
           type: LOGIN_USER,
           payload: loginUser(user),

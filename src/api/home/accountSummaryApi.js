@@ -8,8 +8,7 @@ import { sleep } from '../../utils/sleep';
 class AccountSummaryApi {        
     // Account Summary
     static getAccountSummaryData = async (obj, preUrl="") => {        
-        console.log(process.env.NODE_ENV);
-        if (process.env.NODE_ENV === 'development')
+        if (process.env.REACT_APP_PROVIDER === 'json')
         {        
             let url = preUrl + "/json/home/accountSummary/AccountSummaryData.json";
 
@@ -32,13 +31,11 @@ class AccountSummaryApi {
                 }
             };
 
-            const response = await axios.get(url, config);
-
-            await sleep(1000);
+            const response = await axios.get("/api/accountSummary", config);
 
             //mock up search on server side
-            return _.filter(await response.json(), item => ((!_.trim(obj.assetType) || item.assetType === obj.assetType) && 
-                                                            (!_.trim(obj.investorAccount) || item.name === obj.investorAccount)));
+            return _.filter(response.data, item => ((!_.trim(obj.assetType) || item.assetType === obj.assetType) && 
+                                                            (!_.trim(obj.investorAccount) || item.name === obj.investorAccount)));            
         }
     }
          
@@ -51,7 +48,8 @@ class AccountSummaryApi {
         await sleep(1000);
 
         //mock up search on server side                                                        
-        return _.map(_.filter(await response.json(), item => ((!_.trim(obj.userId) || item.userId === obj.userId))), 
+        return _.map(_.filter(await response.json(), item => ((!_.trim(obj.userId) || item.userId === obj.userId) &&
+                                                            (!_.trim(obj.assetType) || item.assetType === obj.assetType))), 
                         item => _.assign({value: item['number'], text: item['name']}));
     }
 

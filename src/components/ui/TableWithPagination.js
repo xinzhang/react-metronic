@@ -12,7 +12,7 @@ class TableWithPagination extends Component {
         this.state = {
             currentPage: 1,
             totalPage: 1,
-            itemsPerPage: 8,
+            itemsPerPage: 2,  // 8,
             shownPageNum: 5,
             pagedArray: [],
         };
@@ -20,14 +20,10 @@ class TableWithPagination extends Component {
         this.pagination = this.pagination.bind(this);
     }
     
-    componentWillReceiveProps(nextProps) {  
-        if (!nextProps.data || nextProps.data.length == 0) {
-            return;
-        }
- 
+    componentWillReceiveProps(nextProps) {   
         let itemsPerPage = nextProps.itemsPerPage || this.state.itemsPerPage;
         let calculatedNum = parseInt(nextProps.data.length / itemsPerPage, 10);
-        let totalPage = nextProps.data.length % itemsPerPage == 0 ? calculatedNum : calculatedNum + 1;
+        let totalPage = nextProps.data.length % itemsPerPage === 0 ? calculatedNum : calculatedNum + 1;
 
         this.setState({
             currentPage: 1,

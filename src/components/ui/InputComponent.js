@@ -17,6 +17,7 @@ const InputComponent = ({ title, value, width=150, ...props }) => {
 InputComponent.propTypes = {
     title: PropTypes.string,
     value: PropTypes.string,
+    width: PropTypes.number,
 };
 
 export default InputComponent;

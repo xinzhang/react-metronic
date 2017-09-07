@@ -8,6 +8,8 @@ import userReducer from './userReducer';
 import AccountReducer from './accountReducer';
 import FundReducer from './fundReducer';
 import DepositReducer from './depositReducer';
+import CommonReducer from './commonReducer';
+import OrderPadReducer from './orderPadReducer';
 
 const rootReducer = combineReducers({
     rounting: routerReducer,
@@ -19,6 +21,8 @@ const rootReducer = combineReducers({
     accountState: AccountReducer,
     fundState: FundReducer,
     depositState: DepositReducer,
+    commonState: CommonReducer,
+    orderPadState: OrderPadReducer,
 });
 
 export default rootReducer;

@@ -59,34 +59,34 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 class TransactionHistoryPage extends Component {
-  constructor(props) {
-    super(props);
-    
-    let selectedAccountNo = this.props.match.params.accountNo;
-    let fundDepositFlag = this.props.match.params.fundDepositFlag;
-    let fundDepositId = this.props.match.params.fundDepositId;
-    let selectedFundId = (Number(fundDepositFlag) === FUNDFLAG) ? fundDepositId : 0;
-    let selectedDepositId = (Number(fundDepositFlag) === FUNDFLAG) ? 0 : fundDepositId;
-    // set state
-    this.state = {
-        selectedAccountNo: selectedAccountNo || "",
-        selectedFundId: selectedFundId || "",
-        selectedDepositId: selectedDepositId || "",
-        currentlyFundDisplayed: [],
-        currentlyDepositDisplayed: [],
-        transactionNumShown: 10,
-    };
-      
-    //
-    this.props.getAccountList();
-    this.updateAccountOnPage({ accountNo: this.state.selectedAccountNo });
-      
-    // bindings
-    this.onAccountChange = this.onAccountChange.bind(this);
-    this.onFundChange = this.onFundChange.bind(this);
-    this.onDepositChange = this.onDepositChange.bind(this);
-    this.handleRadioChange = this.handleRadioChange.bind(this);
-  }
+    constructor(props) {
+        super(props);
+
+        let selectedAccountNo = this.props.match.params.accountNo;
+        let fundDepositFlag = this.props.match.params.fundDepositFlag;
+        let fundDepositId = this.props.match.params.fundDepositId;
+        let selectedFundId = (Number(fundDepositFlag) === FUNDFLAG) ? fundDepositId : 0;
+        let selectedDepositId = (Number(fundDepositFlag) === FUNDFLAG) ? 0 : fundDepositId;
+        // set state
+        this.state = {
+            selectedAccountNo: selectedAccountNo || "",
+            selectedFundId: selectedFundId || "",
+            selectedDepositId: selectedDepositId || "",
+            currentlyFundDisplayed: [],
+            currentlyDepositDisplayed: [],
+            transactionNumShown: 10,
+        };
+            
+        //
+        this.props.getAccountList();
+        this.updateAccountOnPage({ accountNo: this.state.selectedAccountNo });
+            
+        // bindings
+        this.onAccountChange = this.onAccountChange.bind(this);
+        this.onFundChange = this.onFundChange.bind(this);
+        this.onDepositChange = this.onDepositChange.bind(this);
+        this.handleRadioChange = this.handleRadioChange.bind(this);
+    }
 
     componentWillReceiveProps(nextProps) {             
         // fix the efficiency issue by the code "if (nextProps.isPending === false) { }"
@@ -138,7 +138,7 @@ class TransactionHistoryPage extends Component {
 
     onFundChange(event) {
         let selectedFundId = event.target.value;
-
+        
         this.updatedFundStateOnPage({
             selectedFundId,
             fundTransactionHistory: this.props.fundTransactionHistory,
@@ -155,16 +155,16 @@ class TransactionHistoryPage extends Component {
     }
 
     updatedFundStateOnPage(obj) { 
-        let currentlyFundDisplayed = _.filter(obj.fundTransactionHistory, item => item.fundId === obj.selectedFundId);
+        let currentlyFundDisplayed = _.filter(obj.fundTransactionHistory, item => item.fundId === obj.selectedFundId); 
         // display only limited transaction according to the value of "this.state.transactionNumShown"
         if (this.state.transactionNumShown !== 0) {
             currentlyFundDisplayed = currentlyFundDisplayed.slice(Math.max(currentlyFundDisplayed.length - this.state.transactionNumShown, 0)); 
         }
 
-        let selectedFund = _.findLast(this.props.fundList, item => item.value === obj.selectedFundId);
+        let selectedFund = _.findLast(this.props.fundList, item => item.value === obj.selectedFundId); 
         this.setState({
             selectedFundId: obj.selectedFundId,
-            selectedFundName: selectedFund.text,
+            selectedFundName: (selectedFund && selectedFund.text) || "",
             selectedFundTotalValue: selectedFund.dollarValue,
             currentlyFundDisplayed,
         });
@@ -179,7 +179,7 @@ class TransactionHistoryPage extends Component {
         let selectedDeposit = _.findLast(this.props.depositList, item => item.value === obj.selectedDepositId);   
         this.setState({
             selectedDepositId: obj.selectedDepositId,
-            selectedDepositName: selectedDeposit.text,
+            selectedDepositName: (selectedDeposit && selectedDeposit.text) || "",
             selectedDepositTotalValue: selectedDeposit.dollarValue,
             currentlyDepositDisplayed,
         }); 

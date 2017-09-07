@@ -1,0 +1,51 @@
+[
+    {
+        "paymentId": "000001",
+        "cardNo": "1234567891234567",
+        "expiredDate": "03/2019",
+        "accountNo": "000001",
+        "userId": "000001"
+    },
+    {
+        "paymentId": "000002",
+        "cardNo": "1234567891234567",
+        "expiredDate": "03/2019",
+        "accountNo": "000001",
+        "userId": "000001"
+    },
+    {
+        "paymentId": "000003",
+        "cardNo": "1234567891234567",
+        "expiredDate": "03/2019",
+        "accountNo": "000002",
+        "userId": "000001"
+    },
+    {
+        "paymentId": "000004",
+        "cardNo": "1234567891234567",
+        "expiredDate": "03/2019",
+        "accountNo": "000002",
+        "userId": "000001"
+    },
+    {
+        "paymentId": "000005",
+        "cardNo": "1234567891234567",
+        "expiredDate": "03/2019",
+        "accountNo": "000003",
+        "userId": "000001"
+    },
+    {
+        "paymentId": "000006",
+        "cardNo": "1234567891234567",
+        "expiredDate": "03/2019",
+        "accountNo": "000003",
+        "userId": "000001"
+    },
+    {
+        "paymentId": "000007",
+        "cardNo": "1234567891234567",
+        "expiredDate": "03/2019",
+        "accountNo": "000004",
+        "userId": "000001"
+    }
+]

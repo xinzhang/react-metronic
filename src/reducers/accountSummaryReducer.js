@@ -5,10 +5,11 @@ const INITIAL_STATE = {
     searchResult: [],
 };
 
-AccountSummaryApi.getAccountSummaryData({assetType: 'managed_fund'})
-    .then(result => {
-        INITIAL_STATE.searchResult = result;
-    });
+// only get summary data after user login
+// AccountSummaryApi.getAccountSummaryData({assetType: 'managed_fund'})
+//     .then(result => {
+//         INITIAL_STATE.searchResult = result;
+//     });
 
 const accountSummaryReducer = (state = INITIAL_STATE, action = {}) => {
     switch (action.type) {        

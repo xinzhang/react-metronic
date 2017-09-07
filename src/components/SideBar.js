@@ -1,32 +1,30 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { withRouter } from 'react-router'
 import { NavLink } from 'react-router-dom';
 import './SideBar.css';
+
 
 class SideBar extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            selectedItem: 0
-        };
-    }
-
-    menuClick(index) {
-        this.setState({ selectedItem: index });
+        // this.state = {
+        //     selectedItem: 0
+        // };
     }
 
     render() {
-        const { menuData } = this.props;
+        const { menuData, match, location, history } = this.props;        
+        
+        console.log('sidebar', location, match, menuData);
 
         /* <li className="active"> */
-        let menuContent = menuData.map((item, index) => {    
-            let isSelected = this.state.selectedItem === index;
-            let liClassName = "";
-            if (isSelected) {
-                liClassName = " active";
-            }
+        let menuContent = menuData.map((item, index) => { 
+
+            let liClassName = (location.pathname.indexOf(item.link) > -1) ? " active": ""; 
 
             return (
-                <li key={ item.text } className={ liClassName } onClick={ this.menuClick.bind(this, index) } >
+                <li key={ item.text } className={ liClassName } >
                     <NavLink to={ item.link } activeClassName="active" ><i className={ item.icon }></i>{ item.text }</NavLink>
                 </li>
             );
@@ -70,4 +68,10 @@ class SideBar extends Component {
     }
 }
 
-export default SideBar;
+SideBar.propTypes = {
+    match: PropTypes.object.isRequired,
+    location: PropTypes.object.isRequired,
+    history: PropTypes.object.isRequired
+}
+
+export default withRouter(SideBar);
