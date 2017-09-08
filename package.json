@@ -19,6 +19,7 @@
     "node-sass-chokidar": "0.0.3",
     "npm-run-all": "^4.0.2",
     "react": "^15.6.1",
+    "react-autosuggest": "^9.3.2",
     "react-dom": "^15.6.1",
     "react-load-script": "0.0.6",
     "react-redux": "^5.0.5",
@@ -48,12 +49,23 @@
   },
   "proxy": {
     "/token": {
-      "target": "http://192.168.10.54:9092/ClientPortal.Security.Api/",
+      "target": "http://localhost:48726/",
       "ws": true
     },
     "/api": {
       "target": "http://localhost:55018/",
       "ws": true
+    },
+    "/ePDSApi": {
+      "target": "http://172.20.100.201/api/",
+      "ws": true
+    },
+    "/ePDS": {
+      "target": "http://172.20.100.201/",
+      "ws": true
     }
-  }
+  },
+  "setupFiles": [
+    "./src/localStorageMock.js"
+  ]
 }

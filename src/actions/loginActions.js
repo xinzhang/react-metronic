@@ -20,7 +20,8 @@ export const login = (user) => {
         }
       }
     } else { //return promise
-      return {
+        console.log("login_user");
+      return {   
           type: LOGIN_USER,
           payload: loginUser(user),
       }

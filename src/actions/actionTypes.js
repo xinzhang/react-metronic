@@ -73,3 +73,17 @@ export const ADD_ORDER = 'ADD_ORDER';
 export const ADD_ORDER_PENDING = 'ADD_ORDER_PENDING';
 export const ADD_ORDER_FULFILLED = 'ADD_ORDER_FULFILLED';
 export const ADD_ORDER_REJECTED = 'ADD_ORDER_REJECTED';
+
+// ----------------------------------------------------------
+// EPDS Actions
+// ----------------------------------------------------------
+export const SEARCH_EPDS = 'SEARCH_EPDS';
+export const SEARCH_EPDS_PENDING = 'SEARCH_EPDS_PENDING';
+export const SEARCH_EPDS_FULFILLED = 'SEARCH_EPDS_FULFILLED';
+export const SEARCH_EPDS_REJECTED = 'SEARCH_EPDS_REJECTED';
+
+export const GET_EPDS_DOC = 'GET_EPDS_DOC';
+export const GET_EPDS_DOC_PENDING = 'GET_EPDS_DOC_PENDING';
+export const GET_EPDS_DOC_FULFILLED = 'GET_EPDS_DOC_FULFILLED';
+export const GET_EPDS_DOC_REJECTED = 'GET_EPDS_DOC_REJECTED';
+
