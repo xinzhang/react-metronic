@@ -11,8 +11,14 @@ class epdsApi {
     async getEPDSDoc(docCode, siteUrl = "")
     {
         const url = siteUrl + "/ePDS?APIRCode=" + docCode;
-        console.log(url);
-        return (await fetch(url)).json();
+        const request = new Request(url, {
+              method: 'GET',
+              headers: new Headers({
+                'Content-Type': 'application/octet-stream',
+                'accept': 'application/octet-stream'
+              })
+        });
+        return (await fetch(request)).blob();
     }
 
 }

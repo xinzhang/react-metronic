@@ -8,10 +8,22 @@ export const searchEPDS = (filterText) => {
     }
 };
 
-export const getEPDSDoc = (docLink) => {
+export const getEPDSDoc = (apir) => {
     return {
-        type: types.GET_EPDS_DOC,   
-        payload: (new epdsApi()).getEPDSDoc(docLink)
+        type: types.GET_EPDS_DOC,
+        payload: (new epdsApi()).getEPDSDoc(apir)
     }
 };
 
+export const updateEPDSSearchValue = (value) => {
+  return {
+    type: types.UPDATE_EPDS_SEARCH_VALUE,
+    value
+  };
+}
+
+export const clearEPDSList = () => {
+  return {
+    type: types.CLEAR_EPDS_LIST
+  };
+}
