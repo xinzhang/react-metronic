@@ -61,9 +61,8 @@ class EpdsPage extends Component {
   componentWillReceiveProps(nextProps, nextContext) {
 
     if (nextProps.epdsDocData != null && nextProps.epdsDocData !== this.props.epdsDocData) {
-      console.log('epds page ComponentWillReceiveProps', nextProps)
-      const data = new Blob([nextProps.epdsDocData.slice()]);
-      FileSaver.saveAs(data, this.props.value + ".pdf");
+      //const data = new Blob([nextProps.epdsDocData]);
+      FileSaver.saveAs(nextProps.epdsDocData, this.props.value + ".pdf");
     }
   }
 

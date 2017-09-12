@@ -1,5 +1,6 @@
 import React from 'react';
-import { Field, reduxForm } from 'redux-form';
+import { connect } from 'react-redux';
+import { Field, reduxForm, formValueSelector } from 'redux-form';
 import ResultTitle from  '../../../components/ResultTitle';
 import AssetType from  '../../../components/AssetType';
 import ResetButton from  '../../../components/ui/ResetButton';
@@ -8,7 +9,7 @@ import SelectComponent from  '../../../components/ui/SelectComponent';
 import BuySellSelector from './BuySellSelector';
 import InputComponent from '../../../components/ui/InputComponent';
 
-const validate = values => {
+const validate = (values) => {
     const errors = {}
     if (!values.username) {
         errors.username = 'Required'
@@ -38,36 +39,48 @@ const warn = values => {
     return warnings
 };
 
-const renderTextField = ({ input, label, type, meta: { touched, error, warning } }) => (
+const getAccountListByAssetType = (accountList, assetType) => {
+  return accountList.filter(x=> x.type === assetType);
+}
+
+const renderTextField = ({ input, label, type, disabled, meta: { touched, error, warning } }) => (
     <div>
         <label style={{ fontWeight:'bold' }}>{label}</label>
         <div>
-            <input {...input} className="form-control" placeholder={label} type={type}/>
+            <input {...input} className="form-control" disabled={disabled} placeholder={label} type={type}/>
             {touched && ((error && <span>{error}</span>) || (warning && <span>{warning}</span>))}
         </div>
     </div>
 );
 
-const renderSelectField = ({ input, label, data, valueField, textField, onChange, meta: { touched, error, warning } }) => (
+const renderSelectField = ({ input, label, data, valueField, textField, disabled, assetType, meta: { touched, error, warning } }) => (
   <div>
     <label style={{ fontWeight:'bold' }}>{label} </label>
     <div>
-      <select {...input} className="form-control" onChange={ onChange } >
-        {
+      <select {...input} className="form-control" disabled={disabled}>
+        {[
+            console.log('input', assetType||"") ,
             data.map((item) => {
                 return (<option value={item[valueField]} key={ item[valueField] }>{item[textField]}</option>)
             })
-        }
+
+        ]}
       </select>
       {touched && ((error && <span>{error}</span>) || (warning && <span>{warning}</span>))}
     </div>
   </div>
 );
 
-const OrderPadForm = (props) => { console.log("props in OrderPadForm: " + JSON.stringify(props));
+let OrderPadForm = (props) => { console.log("props in OrderPadForm: " + JSON.stringify(props));
     const { handleSubmit, pristine, reset, submitting,
             assetTypeList, accountList, buySellList,
             fundList, paymentDetailsList, onAccountChange } = props;
+
+    const assetTypeOptions = assetTypeList.map( (item) => {
+      return (<option value={item.value} key={item.value}>{item.text}</option>)
+    });
+
+    console.log('assetType', props.order.assetType);
 
     return (
         <form onSubmit={ handleSubmit }>
@@ -75,44 +88,50 @@ const OrderPadForm = (props) => { console.log("props in OrderPadForm: " + JSON.s
                 <div className="c-order-pad-title"><ResultTitle mainTitle="Order Pad" /></div>
                 <div className="row">
                     <div className="col-md-12">
-                        <Field 
-                            name="assetType" 
-                            component={renderSelectField} 
-                            label="Asset Type" 
+                        <Field
+                            name="assetType"
+                            component={renderSelectField}
+                            label="Asset Type"
                             data={ assetTypeList }
                             valueField="value"
                             textField="text"
-                            onChange={ onAccountChange } />
+                            />
                     </div>
+                    {props.order.assetType}
                     <div className="col-md-12">
-                        <Field 
-                            name="portfolio" 
-                            component={renderSelectField} 
-                            label="Portfolio" 
-                            data={ accountList }
+                        <Field
+                            name="portfolio"
+                            component={renderSelectField}
+                            label="Portfolio"
+                            disabled={props.order.assetType == undefined}
+                            data={ getAccountListByAssetType(accountList, props.order.assetType) }
                             valueField="value"
                             textField="text" /></div>
-                    <div className="col-md-12">                    
-                        <Field 
-                            name="buySell" 
-                            component={renderSelectField} 
-                            label="Buy Sell" 
+                    <div className="col-md-12">
+                        <Field
+                            name="buySell"
+                            component={renderSelectField}
+                            label="Buy Sell"
                             data={ buySellList }
-                            valueField="value"
-                            textField="text" />
-                    </div>
-                    <div className="col-md-12">              
-                        <Field 
-                            name="fundName" 
-                            component={renderSelectField} 
-                            label="Fund Name" 
-                            data={ fundList }
                             valueField="value"
                             textField="text" />
                     </div>
                     <div className="col-md-12">
                         <Field
+                            name="fundName"
+                            component={renderSelectField}
+                            disabled={props.order.assetType == undefined || props.order.portfolio == undefined}
+                            label="Fund Name"
+                            data={ fundList }
+                            valueField="value"
+                            textField="text" />
+                    </div>
+
+                    <div className="col-md-12">
+                        <Field
                             name="amount"
+                            type="number"
+                            disabled={props.order.buySell === 'SU'}
                             component={ renderTextField }
                             label="$ Amount"
                             />
@@ -120,15 +139,17 @@ const OrderPadForm = (props) => { console.log("props in OrderPadForm: " + JSON.s
                     <div className="col-md-12">
                         <Field
                             name="unitAmount"
+                            type="number"
+                            disabled={props.order.buySell === 'BD' || props.order.buySell === 'SD'}
                             component={ renderTextField }
                             label="Unit Amount"
                             />
                     </div>
                     <div className="col-md-12">
-                        <Field 
-                            name="paymentDetails" 
-                            component={renderSelectField} 
-                            label="Payment Details" 
+                        <Field
+                            name="paymentDetails"
+                            component={renderSelectField}
+                            label="Payment Details"
                             data={ paymentDetailsList }
                             valueField="value"
                             textField="text" />
@@ -138,7 +159,7 @@ const OrderPadForm = (props) => { console.log("props in OrderPadForm: " + JSON.s
                     <button type="submit" disabled={submitting}>Submit</button>
                     <button type="button" disabled={pristine || submitting} onClick={reset}>Clear Values</button>
                 </div> */}
-                
+
                 <div className="c-button-row">
                     <div className="c-reset-button">
                         <ResetButton disabled={pristine || submitting} onClick={reset}><i className='fa fa-rotate-left' /> Reset</ResetButton>
@@ -150,12 +171,28 @@ const OrderPadForm = (props) => { console.log("props in OrderPadForm: " + JSON.s
     )
 }
 
-export default reduxForm({
+OrderPadForm =  reduxForm({
     form: 'OrderPadForm',  // a unique identifier for this form
     validate,                // <--- validation function given to redux-form
     warn,                     // <--- warning function given to redux-form
 })(OrderPadForm)
 
+// Decorate with connect to read form values
+const selector = formValueSelector('OrderPadForm'); // <-- same as form name
+OrderPadForm = connect(state => {
+  // can select values individually
+  let order = {
+    assetType: selector(state, 'assetType'),
+    portfolio: selector(state, 'portfolio'),
+    buySell: selector(state, 'buySell'),
+    fundname: selector(state, 'fundname'),
+    amount: selector(state, 'amount'),
+    unitAmount: selector(state, 'unitAmount')
+  };
+  return {order};
+})(OrderPadForm);
+
+export default OrderPadForm;
 
 /*
 

@@ -1,3 +1,4 @@
+import axios from 'axios';
 
 class epdsApi {
 
@@ -19,6 +20,15 @@ class epdsApi {
               })
         });
         return (await fetch(request)).blob();
+
+        // let config = {
+        //     headers: {
+        //       'Content-Type': 'application/octet-stream',
+        //       'accept': 'application/octet-stream'
+        //     }
+        // };
+        //
+        // return (await axios.get(url, config)).data;
     }
 
 }

@@ -15,16 +15,17 @@ import './OrderPadPage.css';
 
 
 const mapStateToProps = (state) => {
+    const empty = {value:'', text:'Please Select One ...'};
     return {
         OrderPadHeader,
-        assetTypeList: state.commonState.assetTypeList,
-        accountList: state.accountState.accountList,
-        buySellList: state.commonState.buySellList,
-        fundList: state.fundState.fundList,
+        assetTypeList: [empty, ...state.commonState.assetTypeList],
+        accountList: [empty, ...state.accountState.accountList],
+        buySellList: [empty, ...state.commonState.buySellList],
+        fundList: [empty, ...state.fundState.fundList],
         fundDetailsList: state.fundState.fundDetailsList,
-        paymentDetailsList: state.accountState.paymentDetailsList,
-        isPending: state.commonState.isPending || 
-                    state.accountState.isPending || 
+        paymentDetailsList: [empty, ...state.accountState.paymentDetailsList],
+        isPending: state.commonState.isPending ||
+                    state.accountState.isPending ||
                     state.fundState.isPending,
     }
 };
@@ -50,7 +51,7 @@ const mapDispatchToProps = (dispatch) => {
             dispatch(getPaymentDetailsList(obj));
         },
         onSubmitClick: (obj) => {
-            dispatch(addOrder(obj));  
+            dispatch(addOrder(obj));
         },
   }
 };
@@ -64,7 +65,7 @@ class OrderPadPage extends Component {
             selectedFundId: "",
             currentlyOrderPadDisplayed: [],
         };
-            
+
         // call the actions to load the data
         this.props.getAssetTypeList({});
         this.props.getAccountList({});
@@ -76,27 +77,27 @@ class OrderPadPage extends Component {
         // this. = this..bind(this);
     }
 
-    componentWillReceiveProps(nextProps) {             
-        if (nextProps.isPending === false) { 
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.isPending === false) {
             let selectedFundId = this.state.selectedFundId || (nextProps.fundList && nextProps.fundList[0] && nextProps.fundList[0].value);
 
             this.updatedOrderPadStateOnPage({
                 selectedFundId,
                 fundDetailsList: nextProps.fundDetailsList,
             });
-            
+
         }
     }
 
     onFundChange(event) {
         let selectedFundId = event.target.value;
-        
+
         this.updatedFundStateOnPage({
             selectedFundId,
             fundTransactionHistory: this.props.fundTransactionHistory,
         });
     }
-    
+
     updatedOrderPadStateOnPage(obj) {
         this.setState({
             currentlyOrderPadDisplayed: _.filter(obj.fundDetailsList, item => item.fundId === obj.selectedFundId),
