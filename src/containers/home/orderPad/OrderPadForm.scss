@@ -1,0 +1,22 @@
+.c-render-text-container {
+    display: flex;
+    flex-direction: row;
+    height: 40px;
+    //align-items: center;
+
+    .c-render-title {
+        width: 200px;
+        padding-right: 10px;
+        font-weight: bold;
+    }
+
+    .c-render-control {
+      flex: 1;
+    }
+
+    .c-render-error {
+      font-weight: bold;
+      font-size: 12px;
+      color: red;
+    }
+}

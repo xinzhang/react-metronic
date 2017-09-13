@@ -1,0 +1,14 @@
+.c-render-text-container {
+  display: flex;
+  flex-direction: row;
+  height: 40px; }
+  .c-render-text-container .c-render-title {
+    width: 200px;
+    padding-right: 10px;
+    font-weight: bold; }
+  .c-render-text-container .c-render-control {
+    flex: 1; }
+  .c-render-text-container .c-render-error {
+    font-weight: bold;
+    font-size: 12px;
+    color: red; }

@@ -10,18 +10,21 @@ import BuySellSelector from './BuySellSelector';
 import InputComponent from '../../../components/ui/InputComponent';
 import FundAutoSuggestion from '../../../components/FundAutoSuggestion';
 
+import './OrderPadForm.css'
+
 const validate = (values) => {
     const errors = {}
-    if (!values.username) {
-        errors.username = 'Required'
-    } else if (values.username.length > 15) {
-        errors.username = 'Must be 15 characters or less'
+    if (!values.assetType) {
+        errors.assetType = 'Required'
     }
-    if (!values.email) {
-        errors.email = 'Required'
-    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-        errors.email = 'Invalid email address'
+    if (!values.portfolio) {
+        errors.portfolio = 'Required'
     }
+
+    if (!values.buySell) {
+        errors.buySell = 'Required'
+    }
+
     if (!values.age) {
         errors.age = 'Required'
     } else if (isNaN(Number(values.age))) {
@@ -33,11 +36,6 @@ const validate = (values) => {
 };
 
 const warn = values => {
-    const warnings = {}
-    if (values.age < 19) {
-        warnings.age = 'Hmm, you seem a bit young...'
-    }
-    return warnings
 };
 
 const getAccountListByAssetType = (accountList, assetType) => {
@@ -45,19 +43,19 @@ const getAccountListByAssetType = (accountList, assetType) => {
 }
 
 const renderTextField = ({ input, label, type, disabled, meta: { touched, error, warning } }) => (
-    <div>
-        <label style={{ fontWeight:'bold' }}>{label}</label>
-        <div>
+    <div className="form-group c-render-text-container">
+        <label className="control-label c-render-title" style={{ fontWeight:'bold' }}>{label}</label>
+        <div className="c-render-control">
             <input {...input} className="form-control" disabled={disabled} placeholder={label} type={type}/>
-            {touched && ((error && <span>{error}</span>) || (warning && <span>{warning}</span>))}
+            {touched && ((error && <span className="c-render-error">{error}</span>) || (warning && <span>{warning}</span>))}
         </div>
     </div>
 );
 
 const renderSelectField = ({ input, label, data, valueField, textField, disabled, assetType, meta: { touched, error, warning } }) => (
-  <div>
-    <label style={{ fontWeight:'bold' }}>{label} </label>
-    <div>
+  <div className="form-group c-render-text-container">
+    <label className="control-label c-render-title" style={{ fontWeight:'bold' }}>{label} </label>
+    <div className="c-render-control">
       <select {...input} className="form-control" disabled={disabled}>
         {[
             console.log('input', assetType||"") ,
@@ -67,17 +65,17 @@ const renderSelectField = ({ input, label, data, valueField, textField, disabled
 
         ]}
       </select>
-      {touched && ((error && <span>{error}</span>) || (warning && <span>{warning}</span>))}
+      {touched && ((error && <span className="c-render-error">{error}</span>) || (warning && <span>{warning}</span>))}
     </div>
   </div>
 );
 
 const renderFundAutoSuggestion = ({ input, label, data, disabled, meta: { touched, error, warning } }) => (
-  <div>
-    <label style={{ fontWeight:'bold' }}>{label} </label>
-    <div>
+  <div className="c-render-text-container">
+    <label className="c-render-title" style={{ fontWeight:'bold' }}>{label} </label>
+    <div className="c-render-control">
       <FundAutoSuggestion {...input} className="form-control" disabled={disabled} data={data} />
-      {touched && ((error && <span>{error}</span>) || (warning && <span>{warning}</span>))}
+      {touched && ((error && <span className="c-render-error">{error}</span>) || (warning && <span>{warning}</span>))}
     </div>
   </div>
 );
@@ -144,6 +142,7 @@ let OrderPadForm = (props) => { console.log("props in OrderPadForm: " + JSON.str
                             label="$ Amount"
                             />
                     </div>
+
                     <div className="col-md-12">
                         <Field
                             name="unitAmount"
