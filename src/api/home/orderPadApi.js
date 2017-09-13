@@ -3,13 +3,29 @@ import fetch from 'isomorphic-fetch';
 import { sleep } from '../../utils/sleep';
 import { creditCardformat } from '../../utils/StringService';
 
-class OrderPadApi {    
-    static getFundDetailsList = async (obj, preUrl="") => {    
+class OrderPadApi {
+  static getOrderFundList = async (preUrl="") => {
+      if (process.env.NODE_ENV === 'development')
+      {
+          let url = preUrl + "/json/home/orderPad/fund.json";
+
+          const response = await fetch(url);
+
+          await sleep(1000);
+
+          //mock up search on server side
+          return (await response.json());
+      } else {
+          console.log('production');
+      }
+  }
+
+    static getFundDetailsList = async (obj, preUrl="") => {
         if (process.env.NODE_ENV === 'development')
-        {        
+        {
             let url = preUrl + "/json/home/orderPad/FundDetails.json";
 
-            const response = await fetch(url); 
+            const response = await fetch(url);
 
             await sleep(1000);
 
@@ -19,13 +35,13 @@ class OrderPadApi {
             console.log('production');
         }
     }
-     
-    static getPaymentDetailsList = async (obj, preUrl="") => {       
+
+    static getPaymentDetailsList = async (obj, preUrl="") => {
         if (process.env.NODE_ENV === 'development')
-        {        
+        {
             let url = preUrl + "/json/home/orderPad/PaymentDetails.json";
 
-            const response = await fetch(url); 
+            const response = await fetch(url);
 
             await sleep(1000);
             console.log("obj.accountNo:", obj.accountNo);
@@ -37,8 +53,7 @@ class OrderPadApi {
         } else {
             console.log('production');
         }
-    }   
+    }
 }
 
 export default OrderPadApi;
-

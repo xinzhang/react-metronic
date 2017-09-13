@@ -8,6 +8,7 @@ import SubmitButton from  '../../../components/ui/SubmitButton';
 import SelectComponent from  '../../../components/ui/SelectComponent';
 import BuySellSelector from './BuySellSelector';
 import InputComponent from '../../../components/ui/InputComponent';
+import FundAutoSuggestion from '../../../components/FundAutoSuggestion';
 
 const validate = (values) => {
     const errors = {}
@@ -71,16 +72,24 @@ const renderSelectField = ({ input, label, data, valueField, textField, disabled
   </div>
 );
 
+const renderFundAutoSuggestion = ({ input, label, data, disabled, meta: { touched, error, warning } }) => (
+  <div>
+    <label style={{ fontWeight:'bold' }}>{label} </label>
+    <div>
+      <FundAutoSuggestion {...input} className="form-control" disabled={disabled} data={data} />
+      {touched && ((error && <span>{error}</span>) || (warning && <span>{warning}</span>))}
+    </div>
+  </div>
+);
+
 let OrderPadForm = (props) => { console.log("props in OrderPadForm: " + JSON.stringify(props));
     const { handleSubmit, pristine, reset, submitting,
             assetTypeList, accountList, buySellList,
-            fundList, paymentDetailsList, onAccountChange } = props;
+            orderFundList, paymentDetailsList, onAccountChange } = props;
 
     const assetTypeOptions = assetTypeList.map( (item) => {
       return (<option value={item.value} key={item.value}>{item.text}</option>)
     });
-
-    console.log('assetType', props.order.assetType);
 
     return (
         <form onSubmit={ handleSubmit }>
@@ -119,12 +128,11 @@ let OrderPadForm = (props) => { console.log("props in OrderPadForm: " + JSON.str
                     <div className="col-md-12">
                         <Field
                             name="fundName"
-                            component={renderSelectField}
+                            component={renderFundAutoSuggestion}
                             disabled={props.order.assetType == undefined || props.order.portfolio == undefined}
                             label="Fund Name"
-                            data={ fundList }
-                            valueField="value"
-                            textField="text" />
+                            data={ orderFundList }
+                            />
                     </div>
 
                     <div className="col-md-12">

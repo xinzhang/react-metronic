@@ -1,44 +1,14 @@
 [
     {
-        "fundId": "000001",
-        "exitPrice": "100",
-        "buyPrice": "90",
-        "holdings": "200"
+        "fundId":1,
+        "fundCode":"",
+        "fundName":"",
+        "type":"managed_fund"
     },
     {
-        "fundId": "000002",
-        "exitPrice": "100",
-        "buyPrice": "90",
-        "holdings": "200"
-    },
-    {
-        "fundId": "000003",
-        "exitPrice": "100",
-        "buyPrice": "90",
-        "holdings": "200"
-    },
-    {
-        "fundId": "000004",
-        "exitPrice": "100",
-        "buyPrice": "90",
-        "holdings": "200"
-    },
-    {
-        "fundId": "000005",
-        "exitPrice": "100",
-        "buyPrice": "90",
-        "holdings": "200"
-    },
-    {
-        "fundId": "000006",
-        "exitPrice": "100",
-        "buyPrice": "90",
-        "holdings": "200"
-    },
-    {
-        "fundId": "000007",
-        "exitPrice": "100",
-        "buyPrice": "90",
-        "holdings": "200"
+        "fundId":1,
+        "fundCode":"",
+        "fundName":"",
+        "type":"managed_fund"
     }
 ]

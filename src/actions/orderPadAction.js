@@ -1,6 +1,13 @@
 import * as types from './actionTypes';
 import OrderPadApi from '../api/home/orderPadApi';
 
+export const getOrderFundList = () => {
+    return {
+        type: types.GET_ORDER_FUND_LIST,
+        payload: OrderPadApi.getOrderFundList(),
+    }
+};
+
 export const getFundDetailsList = (obj) => {
     return {
         type: types.GET_FUND_DETAILS_LIST,
@@ -10,7 +17,7 @@ export const getFundDetailsList = (obj) => {
 
 export const getPaymentDetailsList = (obj) => {
     return {
-        type: types.GET_PAYMENT_DETAILS_LIST,   
+        type: types.GET_PAYMENT_DETAILS_LIST,
         payload: OrderPadApi.getPaymentDetailsList(obj),
     }
 };
@@ -22,5 +29,3 @@ export const addOrder = (obj) => {
         payload: OrderPadApi.addOrder(obj),
     }
 };
-
-             

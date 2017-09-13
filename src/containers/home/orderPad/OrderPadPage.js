@@ -6,8 +6,8 @@ import { Values } from 'redux-form-website-template';
 import CTable from  '../../../components/ui/CTable';
 import OrderPadForm from './OrderPadForm';
 
-import { addOrder, getFundDetailsList, getPaymentDetailsList } from '../../../actions/orderPadAction';
-import { getAccountList, getFundList } from '../../../actions/accountSummaryAction';
+import { addOrder, getOrderFundList, getFundDetailsList, getPaymentDetailsList } from '../../../actions/orderPadAction';
+import { getAccountList } from '../../../actions/accountSummaryAction';
 import { getAssetTypeList, getBuySellList } from '../../../actions/commonAction';
 import { OrderPadHeader } from './OrderPadHeader';
 
@@ -21,7 +21,7 @@ const mapStateToProps = (state) => {
         assetTypeList: [empty, ...state.commonState.assetTypeList],
         accountList: [empty, ...state.accountState.accountList],
         buySellList: [empty, ...state.commonState.buySellList],
-        fundList: [empty, ...state.fundState.fundList],
+        orderFundList: [empty, ...state.fundState.orderFundList],
         fundDetailsList: state.fundState.fundDetailsList,
         paymentDetailsList: [empty, ...state.accountState.paymentDetailsList],
         isPending: state.commonState.isPending ||
@@ -41,8 +41,8 @@ const mapDispatchToProps = (dispatch) => {
         getBuySellList: (obj) => {
             dispatch(getBuySellList(obj));
         },
-        getFundList: (obj) => {
-            dispatch(getFundList(obj));
+        getOrderFundList: () => {
+            dispatch(getOrderFundList());
         },
         getFundDetailsList: (obj) => {
             dispatch(getFundDetailsList(obj));
@@ -70,7 +70,7 @@ class OrderPadPage extends Component {
         this.props.getAssetTypeList({});
         this.props.getAccountList({});
         this.props.getBuySellList({});
-        this.props.getFundList({});
+        this.props.getOrderFundList();
         this.props.getFundDetailsList({});
         this.props.getPaymentDetailsList({});
 
@@ -120,7 +120,7 @@ OrderPadPage.propTypes = {
     assetTypeList: PropTypes.array,
     accountList: PropTypes.array,
     buySellList: PropTypes.array,
-    fundList: PropTypes.array,
+    fundOrderList: PropTypes.array,
     fundDetailsList: PropTypes.array,
     paymentDetailsList: PropTypes.array,
     isPending: PropTypes.bool,
@@ -130,7 +130,7 @@ OrderPadPage.defaultProps = {
     assetTypeList: [],
     accountList: [],
     buySellList: [],
-    fundList: [],
+    fundOrderList: [],
     fundDetailsList: [],
     paymentDetailsList: [],
 }
