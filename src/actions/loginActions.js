@@ -10,7 +10,11 @@ export const LOGIN_USER_FULFILLED = 'LOGIN_USER_FULFILLED'
 export const LOGIN_USER_REJECTED = 'LOGIN_USER_REJECTED'
 
 export const login = (user) => {
-    if (process.env.REACT_APP_PROVIDER === 'json')
+    console.log('process.env.REACT_APP_PROVIDER ', process.env.REACT_APP_PROVIDER);
+    const app_provider = process.env.REACT_APP_PROVIDER || 'json';
+    console.log('app_provider', app_provider);
+
+    if (app_provider === 'json')
     { 
       return {
         type: LOGIN_USER_FULFILLED,

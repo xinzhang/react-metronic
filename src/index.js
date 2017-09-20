@@ -9,8 +9,8 @@ import App from './App';
 
 import './index.css';
 
-//init store dispatch
-
+//init process env value
+process.env.REACT_APP_PROVIDER = 'json';
 
 //ReactDOM.render(<App />, document.getElementById('root'));
 ReactDOM.render((

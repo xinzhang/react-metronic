@@ -5,7 +5,8 @@ import { creditCardformat } from '../../utils/StringService';
 
 class OrderPadApi {
   static getOrderFundList = async (preUrl="") => {
-      if (process.env.NODE_ENV === 'development')
+      const app_provider = process.env.REACT_APP_PROVIDER || 'json';
+      if (app_provider === 'json')  
       {
           let url = preUrl + "/json/home/orderPad/fund.json";
 
@@ -21,7 +22,8 @@ class OrderPadApi {
   }
 
     static getFundDetailsList = async (obj, preUrl="") => {
-        if (process.env.NODE_ENV === 'development')
+        const app_provider = process.env.REACT_APP_PROVIDER || 'json';
+        if (app_provider === 'json')    
         {
             let url = preUrl + "/json/home/orderPad/FundDetails.json";
 
@@ -37,7 +39,8 @@ class OrderPadApi {
     }
 
     static getPaymentDetailsList = async (obj, preUrl="") => {
-        if (process.env.NODE_ENV === 'development')
+        const app_provider = process.env.REACT_APP_PROVIDER || 'json';
+        if (app_provider === 'json')    
         {
             let url = preUrl + "/json/home/orderPad/PaymentDetails.json";
 

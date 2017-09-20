@@ -8,7 +8,8 @@ import { sleep } from '../../utils/sleep';
 class AccountSummaryApi {
     // Account Summary
     static getAccountSummaryData = async (obj, preUrl="") => {
-        if (process.env.REACT_APP_PROVIDER === 'json')
+        const app_provider = process.env.REACT_APP_PROVIDER || 'json';
+        if (app_provider === 'json')
         {
             let url = preUrl + "/json/home/accountSummary/AccountSummaryData.json";
 

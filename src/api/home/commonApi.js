@@ -13,8 +13,9 @@ class CommonApi {
         return await response.json();
     }
 
-    static getBuySellList = async (obj, preUrl="") => {      
-        if (process.env.NODE_ENV === 'development')
+    static getBuySellList = async (obj, preUrl="") => {  
+        const app_provider = process.env.REACT_APP_PROVIDER || 'json';
+        if (app_provider === 'json')
         {        
             let url = preUrl + "/json/home/orderPad/BuySellData.json";
 
